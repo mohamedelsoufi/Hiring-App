@@ -1,0 +1,3267 @@
+{
+	"info": {
+		"_postman_id": "3f3e11aa-4c2a-4903-8a99-9101fa684bcb",
+		"name": "hiring2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "employee",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "Employee login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "ahmed1@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "ahmed1",
+											"type": "text"
+										},
+										{
+											"key": "token_firebase",
+											"value": "aklhdjkas sad",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/login",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employee  logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vc21hcnRncm91cC1kZW1vLmNvbS9tb3JvL0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL2xvZ2luIiwiaWF0IjoxNjI5OTI5MjY1LCJuYmYiOjE2Mjk5MjkyNjUsImp0aSI6Ilg0VnZWckZsRlZlUmJ0dUsiLCJzdWIiOjEwLCJwcnYiOiJlN2MyM2MyNTM2ODVhMDUxMDc3Yjc2MDk3NjcxODllNmNhMjI0Nzg1IiwidHlwZSI6IkVtcGxveWVlIn0.B_-7FeY8Qhg8R89w454wxiMYZ7wbofkPZWXVJ9ilmJQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/logout",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employee  register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "ahmed303@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "ahmed1",
+											"type": "text"
+										},
+										{
+											"key": "fullName",
+											"value": "ahmed maher",
+											"type": "text"
+										},
+										{
+											"key": "confirmPassword",
+											"value": "ahmed1",
+											"type": "text"
+										},
+										{
+											"key": "country_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "city_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "industry",
+											"value": "1",
+											"description": "category id",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "asd",
+											"type": "text"
+										},
+										{
+											"key": "qualification",
+											"value": "as",
+											"type": "text"
+										},
+										{
+											"key": "university",
+											"value": "asjh",
+											"type": "text"
+										},
+										{
+											"key": "graduation_year",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "study_field",
+											"value": "asdas",
+											"type": "text"
+										},
+										{
+											"key": "deriving_licence",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "birth",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "skills[]",
+											"value": "asd",
+											"type": "text"
+										},
+										{
+											"key": "skills[]",
+											"value": "asd2",
+											"type": "text"
+										},
+										{
+											"key": "languages[]",
+											"value": "en",
+											"type": "text"
+										},
+										{
+											"key": "languages[]",
+											"value": "ar",
+											"type": "text"
+										},
+										{
+											"key": "cv",
+											"type": "file",
+											"src": "/C:/Users/or22/Desktop/Ahmed Maher(backend).pdf"
+										},
+										{
+											"key": "audio",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "video",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/or22/Desktop/a.jpg"
+										},
+										{
+											"key": "experience",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "token_firebase",
+											"value": "asdwq",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/register",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "forget Password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "ahmedmaher1792001@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/forgetPassword",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"forgetPassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "ahmed1@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "resetToken",
+											"value": "1ykkUM76guXfY0g84M9tjqjYCsxyuDcrefGLQfvs",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "ahmed1",
+											"type": "text"
+										},
+										{
+											"key": "confirmPassword",
+											"value": "ahmed1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/changePassword",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"changePassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employee login(socialite)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "devshifa212@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "email_id",
+											"value": "110784859353789236039",
+											"type": "text"
+										},
+										{
+											"key": "firebase_token",
+											"value": "jhsajkf",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/login/socialite",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"login",
+										"socialite"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employey register (socialite)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "ahmedashrafofficial99@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "email_id",
+											"value": "110784859353789236039",
+											"type": "text"
+										},
+										{
+											"key": "fullName",
+											"value": "ahmed maher",
+											"type": "text"
+										},
+										{
+											"key": "token_firebase",
+											"value": "jshdfksdah",
+											"type": "text"
+										},
+										{
+											"key": "country_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "city_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "title",
+											"type": "text"
+										},
+										{
+											"key": "qualification",
+											"value": "ghjg",
+											"type": "text"
+										},
+										{
+											"key": "university",
+											"value": "jhjk",
+											"type": "text"
+										},
+										{
+											"key": "graduation_year",
+											"value": "2002",
+											"type": "text"
+										},
+										{
+											"key": "experience",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "study_field",
+											"value": "askdhf",
+											"type": "text"
+										},
+										{
+											"key": "deriving_licence",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "birth",
+											"value": "20001",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "industry",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "skills[]",
+											"value": "php",
+											"type": "text"
+										},
+										{
+											"key": "skills[]",
+											"value": "laravel",
+											"type": "text"
+										},
+										{
+											"key": "languages[]",
+											"value": "ar",
+											"type": "text"
+										},
+										{
+											"key": "languages[]",
+											"value": "en",
+											"type": "text"
+										},
+										{
+											"key": "cv",
+											"type": "file",
+											"src": "/C:/Users/or22/Desktop/Ahmed Maher(backend).pdf",
+											"disabled": true
+										},
+										{
+											"key": "audio",
+											"type": "file",
+											"src": "/C:/Users/or22/Desktop/a.jpg",
+											"disabled": true
+										},
+										{
+											"key": "video",
+											"type": "file",
+											"src": "/C:/Users/or22/Desktop/a.jpg",
+											"disabled": true
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/or22/Desktop/a.jpg",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/register/socialite",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"register",
+										"socialite"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "profile",
+					"item": [
+						{
+							"name": "Employee  get profile",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzE4ODQwNTksIm5iZiI6MTYzMTg4NDA1OSwianRpIjoiMEt3Rlo1M2NqSFhZallVMCIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.EPgpDDCS7G_gwQQ30S3qpbpauX1XY0LL4dpNEZW2qmY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "ahmed@gamil.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "ahmed1"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/profile",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employee  update profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzI4MTc0NDIsIm5iZiI6MTYzMjgxNzQ0MiwianRpIjoiWVR2Slc2a25lcU9LRUt4OCIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.HPYNLUbHFWWO7OSE7dXKz3YjZaey6qPcn6zoxom4fF0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "fullName",
+											"value": "ffffdd12",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "ajhds@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "country_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "city_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "tilte",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "qualification",
+											"value": "11",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "university",
+											"value": "university",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "graduation_year",
+											"value": "20001",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "experience",
+											"value": "10",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "study_field",
+											"value": "ahsdkj",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "deriving_licence",
+											"value": "1",
+											"description": "0->don't have, 1-> have",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "birth",
+											"value": "33333",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "gender",
+											"value": "1",
+											"description": "0->male  1->female",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "cv",
+											"type": "file",
+											"src": "/C:/Users/or22/Desktop/Ahmed Maher(backend).pdf",
+											"disabled": true
+										},
+										{
+											"key": "audio",
+											"type": "file",
+											"src": "/C:/Users/or22/Desktop/4376071629043017.jpg",
+											"disabled": true
+										},
+										{
+											"key": "video",
+											"type": "file",
+											"src": "/C:/Users/or22/Desktop/4376071629043017.jpg",
+											"disabled": true
+										},
+										{
+											"key": "skills[]",
+											"value": "php1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "skills[]",
+											"value": "laravel2",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "industry",
+											"value": "rrr",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "languages[]",
+											"value": "ar1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "languages[]",
+											"value": "en2",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "video",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "audio",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										},
+										{
+											"key": "cv",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/updateProfile",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"updateProfile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzI1NjEwNzksIm5iZiI6MTYzMjU2MTA3OSwianRpIjoiUEVmNVBabzNVS3FWNWhNUyIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.c3-RgnGMxx4F0V7n4bimE9FdndjtJCZiQORmHkxUXE4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "oldPassword",
+											"value": "ahmed2",
+											"type": "text"
+										},
+										{
+											"key": "confirmPassword",
+											"value": "ahmed1",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "ahmed1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/changeEmployeePassword",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"changeEmployeePassword"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Candat",
+					"item": [
+						{
+							"name": "myCandat",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzExODU5ODcsIm5iZiI6MTYzMTE4NTk4NywianRpIjoiandtSGZTdk8xTVFzRjZaNiIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.MlQai02YO44pajtfADW8HXybu1_krViw6PxdOUVRshY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/myCandat",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"myCandat"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "availableMeetings",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzExODU5ODcsIm5iZiI6MTYzMTE4NTk4NywianRpIjoiandtSGZTdk8xTVFzRjZaNiIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.MlQai02YO44pajtfADW8HXybu1_krViw6PxdOUVRshY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/availableMeetings?job_id=15",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"availableMeetings"
+									],
+									"query": [
+										{
+											"key": "job_id",
+											"value": "15"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "accept Offer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzExODc1NDMsIm5iZiI6MTYzMTE4NzU0MywianRpIjoiRVBmcXh6ck1jMzlhVW5tMiIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.dKsy643nc2yIMkrzauM5mLfRivD2MgakiAvoaPYgiQ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "candat_id",
+											"value": "16",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/job/acceptOffer",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"job",
+										"acceptOffer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "accept offer with author meeting time",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzExODc1NDMsIm5iZiI6MTYzMTE4NzU0MywianRpIjoiRVBmcXh6ck1jMzlhVW5tMiIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.dKsy643nc2yIMkrzauM5mLfRivD2MgakiAvoaPYgiQ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "candat_id",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "meetings_time",
+											"value": "33",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/job/acceptOffer/edit",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"job",
+										"acceptOffer",
+										"edit"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "mySchedule",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzExODU5ODcsIm5iZiI6MTYzMTE4NTk4NywianRpIjoiandtSGZTdk8xTVFzRjZaNiIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.MlQai02YO44pajtfADW8HXybu1_krViw6PxdOUVRshY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/mySchedule",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"mySchedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "myJobs",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzEzNTk4NTcsIm5iZiI6MTYzMTM1OTg1NywianRpIjoiOTBPZXZxMnc5ZGNaRGVVaCIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.tUxWb0IcBeBo5rJk3Y8XsPrhsndIsIUSISiCFHQrK3Q",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/myJobs?status=3",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"myJobs"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "3",
+											"description": "0->reject, 1->accept, 2->underreview employer who detemine this, 3->all"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "chat",
+					"item": [
+						{
+							"name": "mySchedule chat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzE2MTEwNDcsIm5iZiI6MTYzMTYxMTA0NywianRpIjoiOGdaWmZxSndxeG04SUVMRyIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.H4H1MB8gN1LKWtBp2rv3MFZjPJH4GhnAKO-mwRcYovU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/chat/mySchedule",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"chat",
+										"mySchedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "makeChat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FobWVkbWFoZXIvbGFyYXZlbC9jb21wYW55L0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL2xvZ2luIiwiaWF0IjoxNjMxNTI5OTA5LCJuYmYiOjE2MzE1Mjk5MDksImp0aSI6IlRFUXpZdEt4cWROMmQxYXUiLCJzdWIiOjIsInBydiI6IjU4NWI4NjUxNjcwMDJlOTg3NDlmNTY0MjI2ZjNiZWEyOWU1NWVkMTEiLCJ0eXBlIjoiRW1wbG95ZWUifQ._K9hppoOqj1uaDJNVKPGI51vN1FL9WKBM2gMjGgabz8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "employer_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/chat/make",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"chat",
+										"make"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "main page",
+					"item": [
+						{
+							"name": "search",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FobWVkbWFoZXIvbGFyYXZlbC9jb21wYW55L0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL2xvZ2luIiwiaWF0IjoxNjMwMjQ3MTA1LCJuYmYiOjE2MzAyNDcxMDUsImp0aSI6ImFOMDdjQ3FFb0FwU2llaXMiLCJzdWIiOjEsInBydiI6ImU3YzIzYzI1MzY4NWEwNTEwNzdiNzYwOTc2NzE4OWU2Y2EyMjQ3ODUiLCJ0eXBlIjoiRW1wbG95ZWUifQ.a0_j3cTqb686bT-ABTKofaHiIiqFufeHRiLYixeqp6g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/search?recommended_jobs=3&jobs=3",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"search"
+									],
+									"query": [
+										{
+											"key": "text",
+											"value": "ja",
+											"disabled": true
+										},
+										{
+											"key": "recommended_jobs",
+											"value": "3"
+										},
+										{
+											"key": "jobs",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "main page",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzEwOTE1MTAsIm5iZiI6MTYzMTA5MTUxMCwianRpIjoiVldEa2tIVXNrREx5bHFnSSIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.NZlQBtluFyfnWI8A3l1SefpZtcWNJwc-ptWsONl4wFY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/mainPage",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"mainPage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "job by category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FobWVkbWFoZXIvbGFyYXZlbC9jb21wYW55L0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL2xvZ2luIiwiaWF0IjoxNjMwMjQ3MTA1LCJuYmYiOjE2MzAyNDcxMDUsImp0aSI6ImFOMDdjQ3FFb0FwU2llaXMiLCJzdWIiOjEsInBydiI6ImU3YzIzYzI1MzY4NWEwNTEwNzdiNzYwOTc2NzE4OWU2Y2EyMjQ3ODUiLCJ0eXBlIjoiRW1wbG95ZWUifQ.a0_j3cTqb686bT-ABTKofaHiIiqFufeHRiLYixeqp6g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/category/job?category_id=1",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"category",
+										"job"
+									],
+									"query": [
+										{
+											"key": "category_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "jobDetails",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzA3NjMwNDUsIm5iZiI6MTYzMDc2MzA0NSwianRpIjoiUmt4Tnp5UFV1UWd6b0duTiIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.HNPlXvIwCrCTTZVq7-gqEp2jlp9veEjYGecs6krTOBU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/jobDetails?job_id=2",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"jobDetails"
+									],
+									"query": [
+										{
+											"key": "job_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "job apply",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FsZ29yaXRobS5kZW1vLmNhcm1hcnRhcHAuY29tL0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNjMwMzIwMjYwLCJuYmYiOjE2MzAzMjAyNjAsImp0aSI6InZGZjd0RUlQTmVqU3lWdFkiLCJzdWIiOjMsInBydiI6IjU4NWI4NjUxNjcwMDJlOTg3NDlmNTY0MjI2ZjNiZWEyOWU1NWVkMTEiLCJ0eXBlIjoiRW1wbG95ZWUifQ.Awo8x_wSMFPRN4cMPA4JQoRpZ37SFCsK01wU1GeuziA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "job_id",
+											"value": "26",
+											"description": "you can get job id form main page api",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "title",
+											"type": "text"
+										},
+										{
+											"key": "body",
+											"value": "body",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/job/apply",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"job",
+										"apply"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "notification",
+					"item": [
+						{
+							"name": "get all notifications",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzE3OTIxMjUsIm5iZiI6MTYzMTc5MjEyNSwianRpIjoiczNTSzV0VnhRRkJ4d3VXNSIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.PZrFiK6fcpQuTHtWR4io3dEXSyuEM9Ha2GEUZkPx8jo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/notification",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"notification"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "make Chat Notification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE2MzE5OTc4MDEsIm5iZiI6MTYzMTk5NzgwMSwianRpIjoiWVRkU0I1U2tUMTUyeHRNaiIsInN1YiI6MiwicHJ2IjoiNTg1Yjg2NTE2NzAwMmU5ODc0OWY1NjQyMjZmM2JlYTI5ZTU1ZWQxMSIsInR5cGUiOiJFbXBsb3llZSJ9.3FGKW1f_h2-Swff8PeEH6PvDSZL216vFPIJP-JaBSy4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "employer_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "title",
+											"type": "text"
+										},
+										{
+											"key": "body",
+											"value": "body",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/makeChatNotification",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"makeChatNotification"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "employer",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "Employer login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "ahmed1@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "ahmed1",
+											"type": "text"
+										},
+										{
+											"key": "token_firebase",
+											"value": "ajhds",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/login",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "employer logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vc21hcnRncm91cC1kZW1vLmNvbS9tb3JvL0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL2VtcGxveWVyL2xvZ2luIiwiaWF0IjoxNjI5ODA1MTkzLCJleHAiOjE2MzM0MDUxOTMsIm5iZiI6MTYyOTgwNTE5MywianRpIjoicTA0NTVoM2dVc1pxOWlKOSIsInN1YiI6MTAsInBydiI6IjMxNjM4ZmQxN2FjOTY0OTZmMTgwYzgwYTU2MzMzOTM2NTQ0NzA4YjgiLCJ0eXBlIjoiRW1wbG95ZXIifQ.WwhnCK6_fe2JfMiXyrTzbI7cDsC0fe9zKNg2nzNkjRA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://smartgroup-demo.com/moro/Hiring-application/public/api/employer/logout",
+									"protocol": "http",
+									"host": [
+										"smartgroup-demo",
+										"com"
+									],
+									"path": [
+										"moro",
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employer register",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "ahmed3@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "business",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "ahmed1",
+											"type": "text"
+										},
+										{
+											"key": "fullName",
+											"value": "ahmed maher",
+											"type": "text"
+										},
+										{
+											"key": "confirmPassword",
+											"value": "ahmed1",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "asd asd asd",
+											"type": "text"
+										},
+										{
+											"key": "mobile_number1",
+											"value": "12345676",
+											"type": "text"
+										},
+										{
+											"key": "mobile_number2",
+											"value": "013132312312",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "company_name",
+											"value": "asd",
+											"type": "text"
+										},
+										{
+											"key": "established_at",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "website",
+											"value": "sjhafdkdgs.com",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/or22/Desktop/4376071629043017.jpg",
+											"disabled": true
+										},
+										{
+											"key": "country_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "city_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/register",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "profile",
+					"item": [
+						{
+							"name": "Employer  get profile",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvcmVnaXN0ZXIiLCJpYXQiOjE2MzAzMjM0NjEsIm5iZiI6MTYzMDMyMzQ2MSwianRpIjoiTk42aXRrY1JkRElRUVhPNiIsInN1YiI6NSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.kUv4FX737NocpjzWrVr9G_2mMCQd9SFdM6inXFX1W54",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/profile",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employer  update profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvcmVnaXN0ZXIiLCJpYXQiOjE2MzAzMjMzNjksIm5iZiI6MTYzMDMyMzM2OSwianRpIjoibm82WXdGOVFUSWVMUTNhRCIsInN1YiI6NCwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.4M9huyakmtzXgfOzDEW0nwY_HwJB09WjGeYjToJjSBY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "fullName",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "title",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "1@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "mobile_number1",
+											"value": "11111111111111112",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "mobile_number2",
+											"value": "1111111111111111111",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "company_name",
+											"value": "11111",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "country_id",
+											"value": "country",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "city_id",
+											"value": "city",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "business",
+											"value": "11111",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "established_at",
+											"value": "11111",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "website",
+											"value": "1.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/updateProfile",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"updateProfile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzI1NjA4NDMsIm5iZiI6MTYzMjU2MDg0MywianRpIjoiczl4dFlOSHlRcHhReDBTMSIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.HGsjCX-m9zB83hNU6l0avHDJv6so3CeORI45yfJ6u8o",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "oldPassword",
+											"value": "ahmed2",
+											"type": "text"
+										},
+										{
+											"key": "confirmPassword",
+											"value": "ahmed1",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "ahmed1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/changeEmployerPassword",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"changeEmployerPassword"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "job",
+					"item": [
+						{
+							"name": "New job",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzEwMDUzOTQsIm5iZiI6MTYzMTAwNTM5NCwianRpIjoieFprZWZJc3RMRHBTaWFvRiIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.-ZDcrSn90IwuTda_gi2LaXTnE3DbHsmv9KPmqYgugNE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "field",
+											"value": "1",
+											"description": "category id",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "erwe",
+											"type": "text"
+										},
+										{
+											"key": "details",
+											"value": "asd",
+											"type": "text"
+										},
+										{
+											"key": "note",
+											"value": "asd",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "experience",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "qualification",
+											"value": "asdhasjkgg ",
+											"type": "text"
+										},
+										{
+											"key": "interviewer_name",
+											"value": "ahmed aa",
+											"type": "text"
+										},
+										{
+											"key": "interviewer_role",
+											"value": "ajksdhuk",
+											"type": "text"
+										},
+										{
+											"key": "meeting_date",
+											"value": "2021-10-5",
+											"type": "text"
+										},
+										{
+											"key": "meeting_from",
+											"value": "15:00:00",
+											"type": "text"
+										},
+										{
+											"key": "meeting_to",
+											"value": "15:30:00",
+											"type": "text"
+										},
+										{
+											"key": "meeting_time",
+											"value": "30",
+											"type": "text"
+										},
+										{
+											"key": "applies",
+											"value": "11",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/newJob",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"newJob"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "job edit",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vdGVzdC9IaXJpbmctYXBwbGljYXRpb24vcHVibGljL2FwaS9lbXBsb3llci9sb2dpbiIsImlhdCI6MTYzMDY3NjUxMCwibmJmIjoxNjMwNjc2NTEwLCJqdGkiOiJKem5KTm85bWNDTVNtWVF5Iiwic3ViIjoxLCJwcnYiOiJlNTM1NGNiNWJkN2NhN2Y0MDM2ODMzYTA5NWY0MDkyODgyZDk3MzYwIiwidHlwZSI6IkVtcGxveWVyIn0.CFs3vJvDYhD9qSQ7pWe4l7ADEfqGdO0YSg_6nJ95snU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "job_id",
+											"value": "2",
+											"description": "required",
+											"type": "text"
+										},
+										{
+											"key": "field",
+											"value": "1",
+											"description": "nullable",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "aaaaaaa",
+											"description": "nullable",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "details",
+											"value": "aaaaaaaaa",
+											"description": "nullable",
+											"type": "text"
+										},
+										{
+											"key": "note",
+											"value": "aaaaaaa",
+											"description": "nullable",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "salary",
+											"value": "111111",
+											"description": "nullable",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "gender",
+											"value": "1",
+											"description": "nullable",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "experience",
+											"value": "10",
+											"description": "nullable",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "qualification",
+											"value": "aaaaaaaaa",
+											"description": "nullable",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "interviewer_name",
+											"value": "aaaaaaaaaaaaaaaa",
+											"description": "nullable",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "interviewer_role",
+											"value": "aaaaaa",
+											"description": "nullable",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "meeting_date",
+											"value": "2021-08-04",
+											"description": "nullable",
+											"type": "text"
+										},
+										{
+											"key": "meeting_from",
+											"value": "11:30:00",
+											"description": "nullable",
+											"type": "text"
+										},
+										{
+											"key": "meeting_to",
+											"value": "12:00:00",
+											"description": "nullable",
+											"type": "text"
+										},
+										{
+											"key": "meeting_time",
+											"value": "15",
+											"description": "nullable",
+											"type": "text"
+										},
+										{
+											"key": "applies",
+											"value": "20",
+											"description": "nullable",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/jobEdit",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"jobEdit"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "job delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vdGVzdC9IaXJpbmctYXBwbGljYXRpb24vcHVibGljL2FwaS9lbXBsb3llci9sb2dpbiIsImlhdCI6MTYzMDY3NjUxMCwibmJmIjoxNjMwNjc2NTEwLCJqdGkiOiJKem5KTm85bWNDTVNtWVF5Iiwic3ViIjoxLCJwcnYiOiJlNTM1NGNiNWJkN2NhN2Y0MDM2ODMzYTA5NWY0MDkyODgyZDk3MzYwIiwidHlwZSI6IkVtcGxveWVyIn0.CFs3vJvDYhD9qSQ7pWe4l7ADEfqGdO0YSg_6nJ95snU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "job_id",
+											"value": "12",
+											"description": "required",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/JobDelete",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"JobDelete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "chat",
+					"item": [
+						{
+							"name": "mySchedule chat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzE2MTEwNjYsIm5iZiI6MTYzMTYxMTA2NiwianRpIjoiNnpjQWJ5dVhGbFhpZEd5TyIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.XYNVXIN7idoMQntC7woAMC16a1_i4xxAFOvh_dbfELw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/chat/mySchedule",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"chat",
+										"mySchedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "makeChat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FobWVkbWFoZXIvbGFyYXZlbC9jb21wYW55L0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL2VtcGxveWVyL2xvZ2luIiwiaWF0IjoxNjMxNTI4OTMzLCJuYmYiOjE2MzE1Mjg5MzMsImp0aSI6InlzRFZndFB1VzNoWjBpQjgiLCJzdWIiOjEsInBydiI6ImU1MzU0Y2I1YmQ3Y2E3ZjQwMzY4MzNhMDk1ZjQwOTI4ODJkOTczNjAiLCJ0eXBlIjoiRW1wbG95ZXIifQ.ZSl4skuNxo17_AQeaZ8po--CUyt8HmGTXG1gcfspsgw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "employee_id",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/chat/make",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"chat",
+										"make"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Candat",
+					"item": [
+						{
+							"name": "my Candat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzIzMjg2NTMsIm5iZiI6MTYzMjMyODY1MywianRpIjoibXkxaVBUMkdLbWZ4T1lMUyIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.e1YyTSA1q_tS9zAvcCe9ngVhmJ77NIQC2yfwFVTH7Os",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/myCandat?candat_status=2&job_id=16",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"myCandat"
+									],
+									"query": [
+										{
+											"key": "candat_status",
+											"value": "2",
+											"description": "0-> all, 1->need to confirm,2->accept, 3->reject"
+										},
+										{
+											"key": "job_id",
+											"value": "16"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show employee profile to accepted Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzA4NDI3ODEsIm5iZiI6MTYzMDg0Mjc4MSwianRpIjoielFwY1VHMGVuU0tGN291byIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.S3x7G0y7CTM7Xa4eX0cbZJBsr5GKFAjjB91UfKckct0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/employee/profile?employee_id=1",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"employee",
+										"profile"
+									],
+									"query": [
+										{
+											"key": "employee_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "available time",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzEwODk3MTIsIm5iZiI6MTYzMTA4OTcxMiwianRpIjoiOU1Ydm9pSVhFbHVGVDRKSyIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.pRlAlcA46RBlG0rvmUUK-IQDrY3O_UfSlKCIhu03cZ8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/availableMeetings?job_id=16",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"availableMeetings"
+									],
+									"query": [
+										{
+											"key": "job_id",
+											"value": "16"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "accept and  reject  candat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzA5NjQzNDcsIm5iZiI6MTYzMDk2NDM0NywianRpIjoieWFjMHc4dnFPWkF3aE5MdyIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.WrJA6UIVB3NZuEJe2TYqAngqmzuwB8QzAY-LgK_BVns",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "candat_id",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "avmeeting_id",
+											"value": "178",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "1",
+											"description": "1=> accept,  0 => reject ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/candat/accept-reject",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"candat",
+										"accept-reject"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "meeting Summary",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzE0NDA5MTMsIm5iZiI6MTYzMTQ0MDkxMywianRpIjoiOU1uYzJtTU45NVZRaTdVNyIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.UkdUILTBBD5M33cE0okB45zzqcTljqJFzwEDDj3Jn08",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/meetingSummary",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"meetingSummary"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get  employee by candat status (after interview) Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzI2NjkxNjIsIm5iZiI6MTYzMjY2OTE2MiwianRpIjoiaGpVd2haVVVsWFk4Wjg2RCIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.ACL2G8LL2PQrG_4zpShl1JHzEXL0skscpBVL3Ju47-8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/employees?candat_status=3&job_id=33",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"employees"
+									],
+									"query": [
+										{
+											"key": "candat_status",
+											"value": "3",
+											"description": "0->reject 1->accept 2->under review employer who detemine this ,3-> all"
+										},
+										{
+											"key": "job_id",
+											"value": "33"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "meeting live",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzE2MjI1MDQsIm5iZiI6MTYzMTYyMjUwNCwianRpIjoiNzhuck40dnF0UmZZMUUzUSIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9._mywWwOkzn_hnASV23kOs1Y0X7tX4xxQxkGOCDvNA3o",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/myCandat/live",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"myCandat",
+										"live"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "after interview",
+					"item": [
+						{
+							"name": "accept and Reject Employee after interview",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FobWVkbWFoZXIvbGFyYXZlbC9jb21wYW55L0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL2VtcGxveWVyL2xvZ2luIiwiaWF0IjoxNjMyMTM5NDI1LCJuYmYiOjE2MzIxMzk0MjUsImp0aSI6InhoMEZWQ3NEMzRJZGZMQU4iLCJzdWIiOjEsInBydiI6ImU1MzU0Y2I1YmQ3Y2E3ZjQwMzY4MzNhMDk1ZjQwOTI4ODJkOTczNjAiLCJ0eXBlIjoiRW1wbG95ZXIifQ.1ZRQpljUNPXQ9fjhZTgu16h1r5EJjyvRhNToFQOyxcg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "employee_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "job_id",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "1",
+											"description": "0->reject, 1-> accept, 2 underreview",
+											"type": "text"
+										},
+										{
+											"key": "note",
+											"value": "very good",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "sjdkfh",
+											"type": "text"
+										},
+										{
+											"key": "body",
+											"value": " kjashdfkj",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/acceptRejectEmployee",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"acceptRejectEmployee"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get Candat Details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FobWVkbWFoZXIvbGFyYXZlbC9jb21wYW55L0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL2VtcGxveWVyL2xvZ2luIiwiaWF0IjoxNjMyMzE1NjY4LCJuYmYiOjE2MzIzMTU2NjgsImp0aSI6Im1VaU1JeE44c2Q1bVNQVXciLCJzdWIiOjEsInBydiI6ImU1MzU0Y2I1YmQ3Y2E3ZjQwMzY4MzNhMDk1ZjQwOTI4ODJkOTczNjAiLCJ0eXBlIjoiRW1wbG95ZXIifQ.qbvorhreNS46d4IyMjnMWM7gj93om_Byl9dmapPSd5Y",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/getCandatDetails?employee_id=2&job_id=37",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"getCandatDetails"
+									],
+									"query": [
+										{
+											"key": "employee_id",
+											"value": "2"
+										},
+										{
+											"key": "job_id",
+											"value": "37"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "notification",
+					"item": [
+						{
+							"name": "make Video notification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FobWVkbWFoZXIvbGFyYXZlbC9jb21wYW55L0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL2VtcGxveWVyL2xvZ2luIiwiaWF0IjoxNjMwMjM0OTcyLCJuYmYiOjE2MzAyMzQ5NzIsImp0aSI6InNpY2lBdnhEUjVRT0JzSWUiLCJzdWIiOjIsInBydiI6IjMxNjM4ZmQxN2FjOTY0OTZmMTgwYzgwYTU2MzMzOTM2NTQ0NzA4YjgiLCJ0eXBlIjoiRW1wbG95ZXIifQ.uubCSyqGTQ3NeHxU039sAmpzOJYPrUmZSqsr96a3j3Q",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "employee_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "viedo_channel_name",
+											"value": "jadhkjs",
+											"type": "text"
+										},
+										{
+											"key": "viedo_token",
+											"value": "asdf khsjadf",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "title",
+											"type": "text"
+										},
+										{
+											"key": "body",
+											"value": "body",
+											"type": "text"
+										},
+										{
+											"key": "job_id",
+											"value": "15",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/makeVideo",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"makeVideo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "make Chat Notification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzE2MjI1MDQsIm5iZiI6MTYzMTYyMjUwNCwianRpIjoiNzhuck40dnF0UmZZMUUzUSIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9._mywWwOkzn_hnASV23kOs1Y0X7tX4xxQxkGOCDvNA3o",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/makeChatNotification?employee_id=2&title=wqe&body=AASD",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"makeChatNotification"
+									],
+									"query": [
+										{
+											"key": "employee_id",
+											"value": "2"
+										},
+										{
+											"key": "title",
+											"value": "wqe",
+											"description": "notification title"
+										},
+										{
+											"key": "body",
+											"value": "AASD",
+											"description": "notification body"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get notification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FobWVkbWFoZXIvbGFyYXZlbC9jb21wYW55L0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL2VtcGxveWVyL2xvZ2luIiwiaWF0IjoxNjMyNDEwNTYzLCJuYmYiOjE2MzI0MTA1NjMsImp0aSI6Imxwb3RxSWZZN3VEdFpLa2kiLCJzdWIiOjEsInBydiI6ImU1MzU0Y2I1YmQ3Y2E3ZjQwMzY4MzNhMDk1ZjQwOTI4ODJkOTczNjAiLCJ0eXBlIjoiRW1wbG95ZXIifQ.BAKJwjQGHEkwquz4xiHxHu0O2tFfzFOWXbAYdh6scKo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/notification",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"notification"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "agora",
+					"item": [
+						{
+							"name": "create agora token",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FobWVkbWFoZXIvbGFyYXZlbC9jb21wYW55L0hpcmluZy1hcHBsaWNhdGlvbi9wdWJsaWMvYXBpL2VtcGxveWVyL2xvZ2luIiwiaWF0IjoxNjMwNDA0NTYwLCJuYmYiOjE2MzA0MDQ1NjAsImp0aSI6ImNiU0tvYndiSXVuTmdiOGkiLCJzdWIiOjIsInBydiI6ImU1MzU0Y2I1YmQ3Y2E3ZjQwMzY4MzNhMDk1ZjQwOTI4ODJkOTczNjAiLCJ0eXBlIjoiRW1wbG95ZXIifQ._UbJS-dOQTe3LyPOP6lusKWO9kSH8OsAIIKj2wK--xc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/agora",
+									"protocol": "http",
+									"host": [
+										"algorithm",
+										"demo",
+										"carmartapp",
+										"com"
+									],
+									"path": [
+										"Hiring-application",
+										"public",
+										"api",
+										"employer",
+										"agora"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "accepted employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzE2MjI1MDQsIm5iZiI6MTYzMTYyMjUwNCwianRpIjoiNzhuck40dnF0UmZZMUUzUSIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9._mywWwOkzn_hnASV23kOs1Y0X7tX4xxQxkGOCDvNA3o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/myCandat/accepted?job_id=15",
+							"protocol": "http",
+							"host": [
+								"algorithm",
+								"demo",
+								"carmartapp",
+								"com"
+							],
+							"path": [
+								"Hiring-application",
+								"public",
+								"api",
+								"employer",
+								"myCandat",
+								"accepted"
+							],
+							"query": [
+								{
+									"key": "job_id",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "main page",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzEwMDEzMzgsIm5iZiI6MTYzMTAwMTMzOCwianRpIjoiQ3JqZ1VwSzNEdjZmNXM1SyIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.vd8J2XPGEeqJJ3wx1B_pheasgvAabej_ACcFxou6vFo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/mainPage",
+							"protocol": "http",
+							"host": [
+								"algorithm",
+								"demo",
+								"carmartapp",
+								"com"
+							],
+							"path": [
+								"Hiring-application",
+								"public",
+								"api",
+								"employer",
+								"mainPage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "myScedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzI2MDU4MzUsIm5iZiI6MTYzMjYwNTgzNSwianRpIjoidmJtOXpoelNtemllWEhEVyIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.8a-VZAwQCmfpDQ16ru74auzr13mie_eIQfcJr9fKqag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/mySchedule",
+							"protocol": "http",
+							"host": [
+								"algorithm",
+								"demo",
+								"carmartapp",
+								"com"
+							],
+							"path": [
+								"Hiring-application",
+								"public",
+								"api",
+								"employer",
+								"mySchedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYWxnb3JpdGhtLmRlbW8uY2FybWFydGFwcC5jb20vSGlyaW5nLWFwcGxpY2F0aW9uL3B1YmxpYy9hcGkvZW1wbG95ZXIvbG9naW4iLCJpYXQiOjE2MzIyMjk0OTQsIm5iZiI6MTYzMjIyOTQ5NCwianRpIjoiZGFpODdWbnpVR0xnaWsxTCIsInN1YiI6MSwicHJ2IjoiZTUzNTRjYjViZDdjYTdmNDAzNjgzM2EwOTVmNDA5Mjg4MmQ5NzM2MCIsInR5cGUiOiJFbXBsb3llciJ9.tiXPmLwVW3KrIH3_AOFXUjRERCrBpxguPrEl8zTUgOw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "text",
+									"value": "a",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/employer/search",
+							"protocol": "http",
+							"host": [
+								"algorithm",
+								"demo",
+								"carmartapp",
+								"com"
+							],
+							"path": [
+								"Hiring-application",
+								"public",
+								"api",
+								"employer",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "guest",
+			"item": [
+				{
+					"name": "home",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/guest/mainPage",
+							"protocol": "http",
+							"host": [
+								"algorithm",
+								"demo",
+								"carmartapp",
+								"com"
+							],
+							"path": [
+								"Hiring-application",
+								"public",
+								"api",
+								"guest",
+								"mainPage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "jobDetails",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/guest/jobDetails?job_id=6",
+							"protocol": "http",
+							"host": [
+								"algorithm",
+								"demo",
+								"carmartapp",
+								"com"
+							],
+							"path": [
+								"Hiring-application",
+								"public",
+								"api",
+								"guest",
+								"jobDetails"
+							],
+							"query": [
+								{
+									"key": "job_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/guest/categories",
+							"protocol": "http",
+							"host": [
+								"algorithm",
+								"demo",
+								"carmartapp",
+								"com"
+							],
+							"path": [
+								"Hiring-application",
+								"public",
+								"api",
+								"guest",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "ar",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "countries",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://algorithm.demo.carmartapp.com/Hiring-application/public/api/guest/countries",
+							"protocol": "http",
+							"host": [
+								"algorithm",
+								"demo",
+								"carmartapp",
+								"com"
+							],
+							"path": [
+								"Hiring-application",
+								"public",
+								"api",
+								"guest",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

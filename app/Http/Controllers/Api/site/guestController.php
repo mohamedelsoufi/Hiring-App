@@ -16,24 +16,8 @@ use Illuminate\Support\Facades\Validator;
 
 class guestController
 {
-    public function getAllAds()
-    {
-        $ads=Ad::where('status','publish')->get();
-        if($ads->count() <= 0){
-            return response()->json([
-                'status'  => false,
-                'message' => 'There is No Ads',
-            ],200);
-        }
-        return response()->json([
-            'status'  => true,
-            'message' => 'success',
-            'ads' => adResource::collection($ads),
-        ],200);
-    }
     public function mainPage(Request $request){
-        date_default_timezone_set('Africa/cairo');
-
+        //validation
         $validator = Validator::make($request->all(), [
             'text'    => 'nullable|string',
         ]);
@@ -42,8 +26,11 @@ class guestController
             return response::falid($validator->errors(), 422);
         }
 
-
-        $jobs = Job::where('meeting_date', '=', date('Y-m-d'))->where('meeting_from', '>', date('H:i:s'))->where('status', '=', 1)->where('title', 'LIKE', '%' . $request->get('text') . '%')->orderBy('id', 'desc')->orWhere('meeting_date', '>', date('Y-m-d'))->where('status', '=', 1)->where('title', 'LIKE', '%' . $request->get('text') . '%')->orderBy('id', 'desc')->paginate(6);
+        //get all active jobs if user don't pass text(search)
+       //and search if user pass text 
+        $jobs = Job::where('status', '=', 1)->where('title', 'LIKE', '%' . $request->get('text') . '%')->orderBy('id', 'desc')->dateNotCome()
+                ->orWhere('status', '=', 1)->where('title', 'LIKE', '%' . $request->get('text') . '%')->orderBy('id', 'desc')->timeNotCome()
+                ->paginate(6);
         
         return response()->json([
             'status'  => true,
@@ -53,7 +40,7 @@ class guestController
     }
 
     public function jobDetails(Request $request){
-
+        //validation
         $validator = Validator::make($request->all(), [
             'job_id'    => 'required|exists:jobs,id|integer',
         ]);
@@ -61,8 +48,10 @@ class guestController
         if($validator->fails()){
             return response::falid($validator->errors(), 422);
         }
+
+        //select job if it's active
         $job = job::where('status', '=', 1)->where('id', '=', $request->get('job_id'))->first();
-        
+
         if($job == null){
             return response::falid('this job not found', 404);
         }
@@ -71,32 +60,16 @@ class guestController
     }
 
     public function categories(Request $request){
-        date_default_timezone_set('Africa/cairo');
         //select all categories with job count where not closed
         $categorys = Category::withCount(['job' => function($query) {
-            $query->where('meeting_date', '=', date('Y-m-d'))->where('meeting_from', '>', date('H:i:s'))->where('status', '=', 1)->orWhere('meeting_date', '>', date('Y-m-d'))->where('status', '=', 1);
+            $query->where('status', '=', 1)->dateNotCome()
+                  ->orWhere('status', '=', 1)->timeNotCome();
         }])->get();
-
 
         return categoryWithJobCountResource::collection($categorys);
     }
 
     public function countries(){
         return Country::with('cities')->get();
-    }
-    public function fieldWithSpecila()
-    {
-        $fieldWithSpecial=Category::where('parent_id',null)->with('jobspecial')->get();
-        if($fieldWithSpecial->count() <= 0){
-            return response()->json([
-                'status'  => false,
-                'message' => 'There is No Filed',
-            ],200);
-        }
-        return response()->json([
-            'status'  => true,
-            'message' => 'success',
-            'fieldWithSpecial' => $fieldWithSpecial,
-        ],200);
     }
 }

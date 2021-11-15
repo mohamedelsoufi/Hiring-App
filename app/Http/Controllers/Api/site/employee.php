@@ -30,22 +30,22 @@ class employee extends Controller
 {
     private $FIREBASE_SERVER_API_KEY = 'AAAAehKcgrI:APA91bFvsZKUikAV8p3c3pt6Rm0GeCCgnHQQW4mizDEVml8UFpbjFQzZZWjOtFP6oxxnNj_BqaTv8DHu5ktxwRaU95RiG2oRemvI9HI5zNCARyMpN8vV5beQE4AZGg-AWFjrqQwR9j24';
 
-    public function jobDetails(Request $request){
-        $validator = Validator::make($request->all(), [
-            'job_id'    => 'required|exists:jobs,id|integer',
-        ]);
+    // public function jobDetails(Request $request){
+    //     $validator = Validator::make($request->all(), [
+    //         'job_id'    => 'required|exists:jobs,id|integer',
+    //     ]);
 
-        if($validator->fails()){
-            return response::falid($validator->errors(), 422);
-        }
-        $job = job::where('status', '=', 1)->where('id', '=', $request->get('job_id'))->first();
+    //     if($validator->fails()){
+    //         return response::falid($validator->errors(), 422);
+    //     }
+    //     $job = job::where('status', '=', 1)->where('id', '=', $request->get('job_id'))->first();
 
-        if($job == null){
-            return response::falid('this job not found', 404);
-        }
+    //     if($job == null){
+    //         return response::falid('this job not found', 404);
+    //     }
 
-        return response::suceess('success', 200, 'jobDetails', new jobResource($job));
-    }
+    //     return response::suceess('success', 200, 'jobDetails', new jobResource($job));
+    // }
 
     public function myCandat(){
         try {

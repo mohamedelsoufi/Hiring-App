@@ -37,10 +37,7 @@ class jobResource extends JsonResource
             'employeejob_count' => EmployeeJob::where('job_id', '=', $this->id)->where('meeting_time_status', '=', 1)->get()->count(),
             'applies'           => job::find($this->id)->avmeetings->count(),
             'job_field'         => CategoryTranslation::where('category_id', '=', $this->category_id)->where('locale', '=', 'en')->select('category_id','name')->first(),
-            'job_specialize'    =>$this->special->name,
             'employer'          => new employerResource(Employer::find($this->employer_id)),
-            'country'           =>$this->country->name,
-            'city'              =>$this->city->name,
         ];
     }
 }

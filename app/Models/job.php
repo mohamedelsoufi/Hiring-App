@@ -18,14 +18,14 @@ class job extends Model
     ];
 
     protected $casts = [
-        'experience' => 'integer',
-        'meeting_time' => 'integer',
-        'salary'=>'integer',
-        'gender'=>'integer',
-        'applies'=> 'integer',
-        'status' => 'string'
+        'experience'    => 'integer',
+        'meeting_time'  => 'integer',
+        'salary'        => 'integer',
+        'gender'        => 'integer',
+        'applies'       => 'integer',
     ];
 
+    //relations
     public function employer()
     {
         return $this->belongsTo('App\Models\Employer', 'employer_id');
@@ -54,5 +54,15 @@ class job extends Model
     public function city()
     {
         return $this->belongsTo(City::class, 'city_id');
+    }
+
+
+    //scope 
+    public function scopeDateNotCome($query){
+        return $query->Where('meeting_date', '>', date('Y-m-d'));
+    }
+
+    public function scopeTimeNotCome($query){
+        return $query->where('meeting_date', '=', date('Y-m-d'))->where('meeting_from', '>', date('H:i:s'));
     }
 }

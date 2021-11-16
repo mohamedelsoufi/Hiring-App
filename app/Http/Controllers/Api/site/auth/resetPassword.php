@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api\site;
+namespace App\Http\Controllers\Api\site\auth;
 
 use App\CustomClass\response as CustomClassResponse;
-use App\Http\Requests\UpdatePasswordRequest;
 use App\Mail\resetPassword as MailResetPassword;
-use App\Models\Employees;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

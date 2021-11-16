@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api\site;
+namespace App\Http\Controllers\Api\site\auth;
 
 use App\CustomClass\response;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\employeeResource;
 use App\Http\Resources\employerResource;
 use App\Models\Employees;
@@ -16,7 +17,8 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class authentication extends Controller
 {
-    public function authenticate(Request $request){
+    public function login(Request $request){
+        //get guard
         $guard = $request->route()->getName();
 
         //validation
@@ -45,12 +47,14 @@ class authentication extends Controller
             return response::falid('some thing is wrong', 500);
         }
 
+        //check user
         if($guard == 'employee'){
             // if user auth by employee guard
             if (! $employee = auth('employee')->user()) {
                 return response::falid('user_not_found', 404);
             }
 
+            //check if user blocked
             if($employee->block == 1){
                 return response()->json([
                     'status'  => false,
@@ -59,6 +63,7 @@ class authentication extends Controller
                 ], 200);
             }
 
+            //check if user activation
             if($employee->active == null){
                 return response()->json([
                     'status'  => false,
@@ -78,12 +83,16 @@ class authentication extends Controller
                 'employee'=> new employeeResource($employee),
                 'token'   => $token,
             ], 200);
+            
         } else {
             // if user auth by employer guard
+
+            //get employer data
             if (! $employer = auth('employer')->user()) {
                 return response::falid('user_not_found', 404);
             }
 
+            //check employer active
             if($employer->active == null){
                 return response()->json([
                     'status'  => false,
@@ -107,8 +116,7 @@ class authentication extends Controller
     }
 
     public function socialiteAuthenticate(Request $request){
-        // $guard = $request->route()->getName();
-
+        //validation
         $validator = Validator::make($request->all(), [
             'email' => 'required',
             'email_id' => 'required',
@@ -119,11 +127,13 @@ class authentication extends Controller
             return response::falid($validator->errors(), 422);
         }
 
+        //check if employee emial is exist
         $employee = Employees::where('email', '=', $request->email)->first();
 
         if($employee == null){
             return response::falid('this acount not found', 404);
         } else {
+            //if employee block
             if($employee->block == 1){
                 return response()->json([
                     'status'  => false,
@@ -132,7 +142,8 @@ class authentication extends Controller
             }
         }
 
-        $credentials = ['email' => $request->email,'password' =>  '', 'socialite_id' => $request->email_id];
+        //employee auth
+        $credentials = ['email' => $request->email,'password' =>  ''];
         try {
             if (! $token = auth('employee')->attempt($credentials)) {
                 return response::falid('try again this email not for you', 404);
@@ -155,8 +166,10 @@ class authentication extends Controller
     }
     
     public function logout(Request $request){
+        //get guard
         $guard = $request->route()->getName();
 
+        //get user data
         if (! $user = auth($guard)->user()) {
             return response::falid('user_not_found', 404);
         }
@@ -165,6 +178,7 @@ class authentication extends Controller
         $user->token = null;
         $user->save();
 
+        //logout
         Auth::guard($guard)->logout();
 
         return response::suceess('logout success', 200);

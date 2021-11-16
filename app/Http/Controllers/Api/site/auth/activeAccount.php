@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\site;
+namespace App\Http\Controllers\Api\site\auth;
 
 use App\Mail\ActivateAcount;
 use App\Models\Employees;

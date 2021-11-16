@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api\site;
+namespace App\Http\Controllers\Api\site\auth;
 
 use App\CustomClass\response;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\employeeResource;
 use App\Http\Resources\employerResource;
 use App\Models\Employees;
@@ -17,6 +18,7 @@ use Illuminate\Validation\Rule;
 class register extends Controller
 {
     public function registerEmployee(Request $request){
+        //validation
         $validator = Validator::make($request->all(), [
             'fullName'         => 'required|string',
             'email'             => 'required|string|email|max:255|unique:employees',
@@ -44,20 +46,19 @@ class register extends Controller
             'audio'             => 'nullable|file',
             'video'             => 'nullable|mimes:mp4,mov,ogg',
             'image'             => 'nullable|mimes:jpg,jpeg,png,svg',
-            'token_firebase'    => 'required',
         ]);
 
         if($validator->fails()){
             return response::falid($validator->errors(), 422);
         }
 
+        //create employee
         $employee = Employees::create([
             'fullName'          => $request->get('fullName'),
             'email'             => $request->get('email'),
             'country_id'        => $request->get('country_id'),
             'city_id'           => $request->get('city_id'),
             'password'          => Hash::make($request->get('password')),
-
             'category_id'      => $request->get('industry'),
             'experience'       => $request->get('experience'),
             'title'            => $request->get('title'),
@@ -70,32 +71,31 @@ class register extends Controller
             'gender'           => $request->get('gender'),
             'languages'        => $request->get('languages'),           
             'skills'           => $request->get('skills'),
-            'token'            => $request->get('token_firebase'),
             'phone'             =>$request->get('phone'),
         ]);
 
+        //upload cv
         if($request->has('cv')){
             $path = rand(0,1000000) . time() . '.' . $request->file('cv')->getClientOriginalExtension();
             $request->file('cv')->move(base_path('public/uploads/employee/cv') , $path);
             $employee->cv   = $path;
         }
 
-
-        //updat audio
+        //upload audio
         if($request->has('audio')){
             $path = rand(0,1000000) . time() . '.' . $request->file('audio')->getClientOriginalExtension();
             $request->file('audio')->move(base_path('public/uploads/employee/audio') , $path);
             $employee->audio   = $path;
         }
 
-        //updat video
+        //upload video
         if($request->has('video')){
             $path = rand(0,1000000) . time() . '.' . $request->file('video')->getClientOriginalExtension();
             $request->file('video')->move(base_path('public/uploads/employee/video') , $path);
             $employee->video   = $path;
         }
 
-        //updat image
+        //upload image
         if($request->has('image')){
             $path = rand(0,1000000) . time() . '.' . $request->file('image')->getClientOriginalExtension();
             $request->file('image')->move(base_path('public/uploads/employee/image') , $path);
@@ -104,6 +104,7 @@ class register extends Controller
 
         $employee->save();
 
+        //auth
         $token = JWTAuth::fromUser($employee);
 
         return response()->json([
@@ -115,6 +116,7 @@ class register extends Controller
     }
 
     public function socialiteRegisterEmployee(Request $request){
+        //validation
         $validator = Validator::make($request->all(), [
             'fullName'         => 'required|string',
             'email'             => 'required|string|email|max:255|unique:employees',
@@ -148,6 +150,7 @@ class register extends Controller
             return response::falid($validator->errors(), 422);
         }
 
+        //check if employee email is exist
         $employee = Employees::where('email', '=', $request->email)->first();
 
         if($employee == null){
@@ -172,10 +175,10 @@ class register extends Controller
                 'languages'        => $request->get('languages'),           
                 'skills'           => $request->get('skills'),
                 'token'            => $request->get('token_firebase'),
-                'socialite_id'     => $request->get('email_id'),
                 'active'           => 1,
             ]);
     
+            //upload cv
             if($request->has('cv')){
                 $path = rand(0,1000000) . time() . '.' . $request->file('cv')->getClientOriginalExtension();
                 $request->file('cv')->move(base_path('public/uploads/employee/cv') , $path);
@@ -183,21 +186,21 @@ class register extends Controller
             }
     
     
-            //updat audio
+            //upload audio
             if($request->has('audio')){
                 $path = rand(0,1000000) . time() . '.' . $request->file('audio')->getClientOriginalExtension();
                 $request->file('audio')->move(base_path('public/uploads/employee/audio') , $path);
                 $employee->audio   = $path;
             }
     
-            //updat video
+            //upload video
             if($request->has('video')){
                 $path = rand(0,1000000) . time() . '.' . $request->file('video')->getClientOriginalExtension();
                 $request->file('video')->move(base_path('public/uploads/employee/video') , $path);
                 $employee->video   = $path;
             }
     
-            //updat image
+            //upload image
             if($request->has('image')){
                 $path = rand(0,1000000) . time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $request->file('image')->move(base_path('public/uploads/employee/image') , $path);
@@ -206,6 +209,7 @@ class register extends Controller
     
             $employee->save();
 
+            //auth
             $token = JWTAuth::fromUser($employee);
 
             return response()->json([
@@ -220,6 +224,7 @@ class register extends Controller
     }
 
     public function registerEmpolyer(Request $request){
+        //validation
         $validator = Validator::make($request->all(), [
             'fullName'          => 'required|string',
             'email'             => 'required|string|email|max:255|unique:employers',
@@ -236,13 +241,13 @@ class register extends Controller
             'country_id'        => 'required|integer|exists:countries,id|integer',
             'city_id'           => 'required|integer|exists:cities,id|integer',
             'image'             => 'nullable|mimes:jpg,jpeg,png,svg',
-            'token_firebase'    => 'required',
         ]);
 
         if($validator->fails()){
             return response::falid($validator->errors(), 422);
         }
 
+        //create employer
         $employer = Employer::create([
             'fullName'          => $request->get('fullName'),
             'email'             => $request->get('email'),
@@ -256,7 +261,6 @@ class register extends Controller
             'website'           => $request->get('website'),
             'country_id'        => $request->get('country_id'),
             'city_id'           => $request->get('city_id'),
-            'token'             => $request->get('token_firebase'),
         ]);
 
         //phone 2
@@ -274,14 +278,13 @@ class register extends Controller
             $employer->save();
         }
 
+        //auth
         $token = JWTAuth::fromUser($employer);
-
-        $employer = Employer::find($employer->id);
 
         return response()->json([
             "status"    => true,
             'message'   => 'register success',
-            'employer'   => new employerResource($employer),
+            'employer'   => new employerResource(Employer::find($employer->id)),
             'token'     => $token,
         ], 200);
     }

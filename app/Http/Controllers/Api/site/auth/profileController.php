@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\site;
+namespace App\Http\Controllers\Api\site\auth;
 
 use App\CustomClass\response;
 use App\Http\Resources\employeeResource;
@@ -21,23 +21,12 @@ use Illuminate\Support\Facades\DB;
 class profileController
 {
     public function getProfile(Request $request){
+        //get guared
         $guard = $request->route()->getName();
-        try {
-            if (! $user = auth($guard)->user()) {
-                return response::falid('user_not_found', 404);
-            }
 
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 400);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 400);
-            
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 400);
+        //get user data
+        if (! $user = auth($guard)->user()) {
+            return response::falid('user_not_found', 404);
         }
 
         if($guard == 'employee'){
@@ -49,26 +38,12 @@ class profileController
 
     public function updateEmployeeProfile(Request $request){
 
-        // return $request;
-        try {
-            if (! $employee = auth('employee')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 401);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 401);
-            
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 401);
+        //get user data
+        if (! $employee = auth('employee')->user()) {
+            return response::falid('user_not_found', 404);
         }
 
-        // validate registeration request
+        // validate
         $validator = Validator::make($request->all(), [
             'fullName'          => 'nullable|string|max:250',
             'email'             => 'nullable|email|max:255|unique:employees,email,'. $employee->id,
@@ -100,79 +75,18 @@ class profileController
             return response::falid($validator->errors(), 422);
         }
 
-
         //selet employee
-        $employee = Employees::find($employee->id)->makeVisible(['password' ,'title',
-        'qualification','university','graduation_year','study_field','deriving_licence',
-        'state','skills','languages','cv','audio','video','birth','gender', 'image','phone']);
+        $employee = Employees::find($employee->id);
 
-        if($request->has('fullName')){
-            $employee->fullName      = $request->get('fullName');
-        }
-        if($request->has('email')){
-            $employee->email         = $request->get('email');
-        }
-        if($request->has('phone')){
-            $employee->phone         = $request->get('phone');
-        }
+        $input = $request->only(
+            'fullName', 'country_id', 'city_id', 'title', 'qualification', 'university', 'graduation_year',
+            'experience', 'study_field', 'deriving_licence', 'birth', 'gender', 'skills', 'languages'
+        );
 
-        if($request->has('country_id')){
-            $employee->country_id       = $request->get('country_id');
-        }
+        //update data
+        $employee->update($input);
 
-        if($request->has('city_id')){
-            $employee->city_id          = $request->get('city_id');
-        }
-
-        if($request->has('industry')){
-            $employee->category_id          = $request->get('industry');
-        }
-
-        if($request->has('title')){
-            $employee->title          = $request->get('title');
-        }
-
-        if($request->has('qualification')){
-            $employee->qualification          = $request->get('qualification');
-        }
-
-        if($request->has('university')){
-            $employee->university          = $request->get('university');
-        }
-
-        if($request->has('graduation_year')){
-            $employee->graduation_year          = $request->get('graduation_year');
-        }
-
-        if($request->has('experience')){
-            $employee->experience          = $request->get('experience');
-        }
-
-        if($request->has('study_field')){
-            $employee->study_field          = $request->get('study_field');
-        }
-
-        if($request->has('deriving_licence')){
-            $employee->deriving_licence          = $request->get('deriving_licence');
-        }
-
-        if($request->has('birth')){
-            $employee->birth          = $request->get('birth');
-        }
-
-        if($request->has('gender')){
-            $employee->gender          = $request->get('gender');
-        }
-
-        if($request->has('languages')){
-            $employee->languages          = $request->get('languages');
-        }
-
-        if($request->has('skills')){
-            $employee->skills          = $request->get('skills');
-        }
-
-        //updat cv
+        //update cv
         if($request->has('cv')){
             if($employee->cv == null){
                 $path = rand(0,1000000) . time() . '.' . $request->file('cv')->getClientOriginalExtension();
@@ -193,7 +107,7 @@ class profileController
             }
         }
 
-        //updat audio
+        //update audio
         if($request->has('audio')){
             if($employee->audio == null){
                 $path = rand(0,1000000) . time() . '.' . $request->file('audio')->getClientOriginalExtension();
@@ -202,7 +116,7 @@ class profileController
             } else {
                 $oldAudio = $employee->audio;
 
-                //updat audio
+                //update audio
                 $path = rand(0,1000000) . time() . '.' . $request->file('audio')->getClientOriginalExtension();
                 $request->file('audio')->move(base_path('public/uploads/employee/audio') , $path);
                 $employee->audio   = $path;
@@ -214,7 +128,7 @@ class profileController
             }
         }
 
-        //updat video
+        //update video
         if($request->has('video')){
             if($employee->video == null){
                 $path = rand(0,1000000) . time() . '.' . $request->file('video')->getClientOriginalExtension();
@@ -223,7 +137,7 @@ class profileController
             } else {
                 $oldVideo = $employee->video;
 
-                //updat video
+                //update video
                 $path = rand(0,1000000) . time() . '.' . $request->file('video')->getClientOriginalExtension();
                 $request->file('video')->move(base_path('public/uploads/employee/video') , $path);
                 $employee->video   = $path;
@@ -235,7 +149,7 @@ class profileController
             }
         }
 
-        //updat image
+        //update image
         if($request->has('image')){
             if($employee->image == null){
                 $path = rand(0,1000000) . time() . '.' . $request->file('image')->getClientOriginalExtension();
@@ -244,7 +158,7 @@ class profileController
             } else {
                 $oldImage = $employee->image;
 
-                //updat image
+                //update image
                 $path = rand(0,1000000) . time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $request->file('image')->move(base_path('public/uploads/employee/image') , $path);
                 $employee->image   = $path;
@@ -264,25 +178,12 @@ class profileController
     }
 
     public function updateEmployerProfile(Request $request){
-        try {
-            if (! $employer = auth('employer')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 401);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 401);
-            
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 401);
+        //get employer that login
+        if (! $employer = auth('employer')->user()) {
+            return response::falid('user_not_found', 404);
         }
 
-        // validate registeration request
+        // validate
         $validator = Validator::make($request->all(), [
             'fullName'          => 'nullable|string|max:250',
             'title'             => 'nullable|string|max:250',
@@ -304,53 +205,17 @@ class profileController
 
 
         //sellect employer
-        $employer = Employer::find($employer->id)->makeVisible(['company_name',
-        'country', 'city', 'business', 'established_at', 'website', 'image', 'mobile_number2']);
+        $employer = Employer::find($employer->id);
 
-        if($request->has('fullName')){
-            $employer->fullName      = $request->get('fullName');
-        }
-        if($request->has('email')){
-            $employer->email         = $request->get('email');
-        }
+        //update employer data
+        $input = $request->only(
+            'fullName', 'title', 'mobile_number1', 'mobile_number2','company_name',
+            'country_id','city_id','business','established_at','website'
+        );
 
-        if($request->has('mobile_number1')){
-            $employer->mobile_number1       = $request->get('mobile_number1');
-        }
+        $employer->update($input);
 
-        if($request->has('mobile_number')){
-            $employer->mobile_number2       = $request->get('mobile_number2');
-        }
-
-        if($request->has('title')){
-            $employer->city          = $request->get('title');
-        }
-
-        if($request->has('company_name')){
-            $employer->company_name       = $request->get('company_name');
-        }
-
-        if($request->has('country_id')){
-            $employer->country_id       = $request->get('country_id');
-        }
-
-        if($request->has('city_id')){
-            $employer->city_id       = $request->get('city_id');
-        }
-
-        if($request->has('business')){
-            $employer->business       = $request->get('business');
-        }
-
-        if($request->has('established_at')){
-            $employer->established_at       = $request->get('established_at');
-        }
-
-        if($request->has('website')){
-            $employer->website       = $request->get('website');
-        }
-
-        //updat image
+        //update image
         if($request->has('image')){
             if($employer->image == null){
                 $path = rand(0,1000000) . time() . '.' . $request->file('image')->getClientOriginalExtension();
@@ -359,7 +224,7 @@ class profileController
             } else {
                 $oldImage = $employer->image;
 
-                //updat image
+                //update image
                 $path = rand(0,1000000) . time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $request->file('image')->move(base_path('public/uploads/employer/image') , $path);
                 $employer->image   = $path;
@@ -380,26 +245,12 @@ class profileController
     }
 
     public function changeEmployeePassword(Request $request){
-        // return $request;
-        try {
-            if (! $employee = auth('employee')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 401);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 401);
-            
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 401);
+        //get employee data
+        if (! $employee = auth('employee')->user()) {
+            return response::falid('user_not_found', 404);
         }
 
-        // validate registeration request
+        // validate
         $validator = Validator::make($request->all(), [
             'password'          => 'required|string|min:6',
             'confirmPassword'   => 'required_with:password|string|same:password',
@@ -427,25 +278,12 @@ class profileController
     }
 
     public function changeEmployerPassword(Request $request){
-        try {
-            if (! $employer = auth('employer')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 401);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 401);
-            
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 401);
+        //get employeer data
+        if (! $employer = auth('employer')->user()) {
+            return response::falid('user_not_found', 404);
         }
 
-        // validate registeration request
+        //validate
         $validator = Validator::make($request->all(), [
             'password'          => 'nullable|string|min:6',
             'confirmPassword'   => 'required_with:password|string|same:password',

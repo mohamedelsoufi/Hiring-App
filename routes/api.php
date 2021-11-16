@@ -13,26 +13,26 @@ Route::get('/clear-cache',function(){
     return "cache clear";
 });
 
-Route::post('register', 'Api\site\register@registerEmployee');
-Route::post('register/socialite', 'Api\site\register@socialiteRegisterEmployee');
+Route::post('register', 'Api\site\auth\register@registerEmployee');
+Route::post('register/socialite', 'Api\site\auth\register@socialiteRegisterEmployee');
 
-Route::post('login', 'Api\site\authentication@authenticate')->name('employee');
-Route::post('login/socialite', 'Api\site\authentication@socialiteAuthenticate');
+Route::post('login', 'Api\site\auth\authentication@login')->name('employee');
+Route::post('login/socialite', 'Api\site\auth\authentication@socialiteAuthenticate');
 
-Route::post('forgetPassword', 'Api\site\resetPassword@sendEmail')->name('employee');
-Route::post('checkCode', 'Api\site\resetPassword@checkCode')->name('employee');
-Route::post('changePassword', 'Api\site\resetPassword@passwordResetProcess')->name('employee');
+Route::post('forgetPassword', 'Api\site\auth\resetPassword@sendEmail')->name('employee');
+Route::post('checkCode', 'Api\site\auth\resetPassword@checkCode')->name('employee');
+Route::post('changePassword', 'Api\site\auth\resetPassword@passwordResetProcess')->name('employee');
 
 //active   
-Route::post('sendActiveMail', 'Api\site\activeAccount@sendEmail')->name('employee');
-Route::post('checkActiveCode', 'Api\site\activeAccount@checkCode')->name('employee');
-Route::post('active', 'Api\site\activeAccount@active')->name('employee');
+Route::post('sendActiveMail', 'Api\site\auth\activeAccount@sendEmail')->name('employee');
+Route::post('checkActiveCode', 'Api\site\auth\activeAccount@checkCode')->name('employee');
+Route::post('active', 'Api\site\auth\activeAccount@active')->name('employee');
 
 Route::group(['middleware' => ['auth_emp']], function() {
-    Route::get('profile', 'Api\site\profileController@getProfile')->name('employee');
-    Route::post('logout', 'Api\site\authentication@logout')->name('employee');
-    Route::post('updateProfile', 'Api\site\profileController@updateEmployeeProfile');
-    Route::post('changeEmployeePassword', 'Api\site\profileController@changeEmployeePassword');
+    Route::get('profile', 'Api\site\auth\profileController@getProfile')->name('employee');
+    Route::post('logout', 'Api\site\auth\authentication@logout')->name('employee');
+    Route::post('updateProfile', 'Api\site\auth\profileController@updateEmployeeProfile');
+    Route::post('changeEmployeePassword', 'Api\site\auth\profileController@changeEmployeePassword');
 
     //mian Page
     Route::get('mainPage', 'Api\site\employee@mainPage');    
@@ -74,24 +74,24 @@ Route::group(['middleware' => ['auth_emp']], function() {
 });
 
 Route::group(['prefix' => 'employer'], function() {
-    Route::post('login', 'Api\site\authentication@authenticate')->name('employer');
-    Route::post('register', 'Api\site\register@registerEmpolyer')->name('employer');
+    Route::post('login', 'Api\site\auth\authentication@login')->name('employer');
+    Route::post('register', 'Api\site\auth\register@registerEmpolyer')->name('employer');
 
-    Route::post('forgetPassword', 'Api\site\resetPassword@sendEmail')->name('employer');
-    Route::post('checkCode', 'Api\site\resetPassword@checkCode')->name('employer');
-    Route::post('changePassword', 'Api\site\resetPassword@passwordResetProcess')->name('employer');
+    Route::post('forgetPassword', 'Api\site\auth\resetPassword@sendEmail')->name('employer');
+    Route::post('checkCode', 'Api\site\auth\resetPassword@checkCode')->name('employer');
+    Route::post('changePassword', 'Api\site\auth\resetPassword@passwordResetProcess')->name('employer');
 
     //active
-    Route::post('sendActiveMail', 'Api\site\activeAccount@sendEmail')->name('employer');
-    Route::post('checkActiveCode', 'Api\site\activeAccount@checkCode')->name('employer');
-    Route::post('active', 'Api\site\activeAccount@active')->name('employer');
+    Route::post('sendActiveMail', 'Api\site\auth\activeAccount@sendEmail')->name('employer');
+    Route::post('checkActiveCode', 'Api\site\auth\activeAccount@checkCode')->name('employer');
+    Route::post('active', 'Api\site\auth\activeAccount@active')->name('employer');
 
     Route::group(['middleware' => ['auth_empr']], function() {
         Route::get('test', 'Api\site\Controller@show');
-        Route::get('profile', 'Api\site\profileController@getProfile')->name('employer');
-        Route::post('logout', 'Api\site\authentication@logout')->name('employer');
-        Route::post('updateProfile', 'Api\site\profileController@updateEmployerProfile');
-        Route::post('changeEmployerPassword', 'Api\site\profileController@changeEmployerPassword');
+        Route::get('profile', 'Api\site\auth\profileController@getProfile')->name('employer');
+        Route::post('logout', 'Api\site\auth\authentication@logout')->name('employer');
+        Route::post('updateProfile', 'Api\site\auth\profileController@updateEmployerProfile');
+        Route::post('changeEmployerPassword', 'Api\site\auth\profileController@changeEmployerPassword');
 
         //main page
         Route::get('mainPage/myJob', 'Api\site\employer@mainPage_myJob');

@@ -17,10 +17,7 @@ class EmployeeJob extends Model
         // 'employee_id' 
     ];
     protected $casts = [
-        'job_id' => 'string',
-        'candat_applay_status' => 'string',
-        'meeting_time_status' => 'string',
-        'candat_status' => 'string',
+        
     ];
 
     public function employee()

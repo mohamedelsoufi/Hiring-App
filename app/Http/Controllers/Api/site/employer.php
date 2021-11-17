@@ -9,7 +9,7 @@ use App\Http\Resources\emoloyerNotificationResource;
 use App\Http\Resources\employee_candat_status;
 use App\Http\Resources\employeeResource;
 use App\Http\Resources\jobAvMeetings;
-use App\Http\Resources\jobMeetingsResource;
+use App\Http\Resources\employeeJobsResource;
 use App\Http\Resources\jobResource;
 use App\Http\Resources\employeeChatResource;
 use App\Http\Resources\employerResource;
@@ -482,7 +482,7 @@ class employer
             })->orderBy('id', 'desc')->get();
         }
 
-        return response::suceess('success', 200, 'candat', jobMeetingsResource::collection($jobMeetings));
+        return response::suceess('success', 200, 'candat', employeeJobsResource::collection($jobMeetings));
     }
 
     //before meeting (accept to make interview)

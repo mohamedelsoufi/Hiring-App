@@ -45,7 +45,6 @@ Route::group(['middleware' => ['auth_emp']], function() {
     Route::get('availableMeetings', 'Api\site\employee@availableMeetings');
     Route::post('job/acceptOffer', 'Api\site\employee@acceptOffer');
     Route::post('job/acceptOffer/edit', 'Api\site\employee@accept_offer_with_author_meeting');
-    Route::get('companyDetails', 'Api\site\employee@companyDetails');
 
     Route::get('myJobs', 'Api\site\employee@myJobs');
     Route::get('mySchedule', 'Api\site\employee@mySchedule');
@@ -156,6 +155,8 @@ Route::group(['prefix' => 'employer'], function() {
 Route::group(['prefix' => 'guest'], function() {
     Route::get('mainPage', 'Api\site\guestController@mainPage');
     Route::get('jobDetails', 'Api\site\guestController@jobDetails');
+    Route::get('companyDetails', 'Api\site\guestController@companyDetails');
+
     Route::get('categories', 'Api\site\guestController@categories');
     Route::get('countries', 'Api\site\guestController@countries');
     Route::get('getAllAds', 'Api\site\guestController@getAllAds');

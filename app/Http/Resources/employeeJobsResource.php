@@ -7,7 +7,7 @@ use App\Models\Employees;
 use App\Models\job;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class jobMeetingsResource extends JsonResource
+class employeeJobsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

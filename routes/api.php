@@ -37,9 +37,6 @@ Route::group(['middleware' => ['auth_emp']], function() {
     //mian Page
     Route::get('mainPage', 'Api\site\employee@mainPage');    
 
-    //my jobs
-    Route::get('jobDetails', 'Api\site\employee@jobDetails');
-
     Route::post('job/alreadyApply', 'Api\site\employee@alreadyApply');
     Route::post('job/apply', 'Api\site\employee@applyforJob');
     Route::get('availableMeetings', 'Api\site\employee@availableMeetings');
@@ -53,23 +50,14 @@ Route::group(['middleware' => ['auth_emp']], function() {
     //my jobs meetings
     Route::get('myCandat', 'Api\site\employee@myCandat');
 
-    //chat
-    Route::get('chat/mySchedule', 'Api\site\employee@myScheduleChat');
-    Route::post('chat/make', 'Api\site\employee@makeChat');
-
     //notification
     Route::get('notification', 'Api\site\employee@getEmplyeeNotification');
     Route::post('removeNotification', 'Api\site\employee@removeNotification');
-    Route::post('makeChatNotification', 'Api\site\employee@makeChatNotification');
 
     //search
     Route::post('search/job', 'Api\site\employee@jobSearch');
 
     Route::post('search/recommended_jobs', 'Api\site\employee@recommended_jobsSearch');
-    //read notify
-    Route::post('readEmployeeNotify', 'Api\site\employee@readEmployeeNotify');
-
-
 });
 
 Route::group(['prefix' => 'employer'], function() {
@@ -96,8 +84,6 @@ Route::group(['prefix' => 'employer'], function() {
         Route::get('mainPage/myJob', 'Api\site\employer@mainPage_myJob');
         Route::get('mainPage/authorJobs', 'Api\site\employer@mainPage_authorJobs');
 
-        Route::get('jobDetails', 'Api\site\guestController@jobDetails');
-
         //myScedule
         Route::get('mySchedule', 'Api\site\employer@schedule');
         Route::get('meetingSummary', 'Api\site\employer@meetingSummary');
@@ -123,12 +109,8 @@ Route::group(['prefix' => 'employer'], function() {
         Route::post('candat/accept-reject', 'Api\site\employer@acceptRejectCandat');
         Route::get('availableMeetings', 'Api\site\employer@availableMeetings');
 
-        //chat
-        Route::get('chat/mySchedule', 'Api\site\employer@myScheduleChat');
-
         //notification
         Route::post('makeVideo', 'Api\site\employer@makeVideoNotification');
-        Route::post('makeChatNotification', 'Api\site\employer@makeChatNotification');
 
         //after interview
         Route::post('acceptRejectEmployee', 'Api\site\employer@acceptRejectEmployee');
@@ -140,9 +122,6 @@ Route::group(['prefix' => 'employer'], function() {
 
         //agora
         Route::post('agora', 'Api\site\employer@agoraToken');
-
-        //chat
-        Route::post('chat/make', 'Api\site\employer@makeChat');
 
         //search
         Route::post('search', 'Api\site\employer@search');

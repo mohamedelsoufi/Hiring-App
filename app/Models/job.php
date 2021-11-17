@@ -58,15 +58,12 @@ class job extends Model
 
 
     //scope 
-    public function scopeTimeNotCome($query){
-        return $query->where('meeting_date', '=', date('Y-m-d'))->where('meeting_from', '>', date('H:i:s'));
-    }
-
-    public function scopeDateNotCome($query){
-        return $query->where('meeting_date', '>', date('Y-m-d'));
-    }
 
     public function scopeNotCome($query){
         return $query->where('meeting_date', '>', date('Y-m-d'))->orWhere('meeting_date', '=', date('Y-m-d'))->where('meeting_from', '>', date('H:i:s'));
+    }
+
+    public function scopeThatCome($query){
+        return $query->where('meeting_date', '<', date('Y-m-d'))->orWhere('meeting_date', '=', date('Y-m-d'))->where('meeting_from', '<', date('H:i:s'));
     }
 }

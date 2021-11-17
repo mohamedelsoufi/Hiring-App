@@ -50,11 +50,6 @@ class employee extends Controller
             return response::falid($validator->errors(), 422);
         }
 
-        //employee
-        if (! $employee = auth('employee')->user()) {
-            return response::falid('user_not_found', 404);
-        }
-
         //get all avmeeting for this job
         $avmeeting = Avmeeting::where('available', '=', 0)->where('job_id', '=', $request->get('job_id'))->get();
 

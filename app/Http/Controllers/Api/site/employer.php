@@ -5,26 +5,20 @@ namespace App\Http\Controllers\Api\site;
 use App\CustomClass\response;
 use App\Http\Resources\acceptedEmployeeResource;
 use App\Http\Resources\avmeetingResource;
-use App\Http\Resources\categoryWithJobCountResource;
 use App\Http\Resources\emoloyerNotificationResource;
 use App\Http\Resources\employee_candat_status;
 use App\Http\Resources\employeeResource;
-use App\Http\Resources\jobAvMeetings;
 use App\Http\Resources\employeeJobsResource;
 use App\Http\Resources\jobResource;
-use App\Http\Resources\employeeChatResource;
-use App\Http\Resources\employerResource;
 use App\Models\Avmeeting;
-use App\Models\Category;
 use App\Models\EmployeeJob;
 use App\Models\EmployeeNotifications;
 use App\Models\Employees;
-use App\Models\Employer as ModelsEmployer;
-use App\Models\EmployerChat;
 use App\Models\EmployerNotifications;
 use App\Models\job;
 use App\Models\Report;
-use App\Service\firbaseNotifications;
+use App\Services\AgoraService;
+use App\Services\firbaseNotifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -35,9 +29,10 @@ use Illuminate\Validation\Rule;
 
 class employer
 {
-    public function __construct(firbaseNotifications $firbaseNotifications)
+    public function __construct(firbaseNotifications $firbaseNotifications, AgoraService $AgoraService)
     {
         $this->firbaseNotifications = $firbaseNotifications;
+        $this->AgoraService         = $AgoraService;
     }
 
     //job meeting
@@ -338,7 +333,7 @@ class employer
 
         //add or edit note in EmployeeJob
         $EmployeeJob->note = $request->get('review');
-        
+
         if($EmployeeJob->save()){
             return response::suceess('success', 200, 'note', $request->get('review'));
         }
@@ -570,9 +565,6 @@ class employer
         return response::suceess('success', 200, 'employees', employee_candat_status::collection($employees));
     }
 
-
-
-
     public function acceptedEmployee(Request $request){
         //validation
         $validator = Validator::make($request->all(), [
@@ -588,6 +580,7 @@ class employer
             return response::falid('user_not_found', 404);
         }
 
+        //get employee that accepted in this job
         $employees = Employees::whereHas('EmployeeJob', function($q) use($request, $employer){
             $q->where('job_id', '=', $request->job_id)->where('meeting_time_status', '=', 1)->whereHas('job', function($query) use($employer){
                 $query->where('employer_id', '=', $employer->id);
@@ -597,99 +590,9 @@ class employer
         return response::suceess('success', 200, 'accepted_employees', acceptedEmployeeResource::collection($employees));
     }
 
-    public function mainPage_myJob(){
-        date_default_timezone_set('Africa/cairo');
-
-        try {
-            if (! $employer = auth('employer')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 400);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 400);
-
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 400);
-        }
-
-        $myJobs = Job::where('employer_id', '=', $employer->id)->where('status', '=', 1)->orderBy('id', 'desc')->where('meeting_date', '=', date('Y-m-d'))->where('meeting_from', '>', date('H:i:s'))->orWhere('meeting_date', '>', date('Y-m-d'))->where('employer_id', '=', $employer->id)->where('status', '=', 1)->orderBy('id', 'desc')->paginate(6);
-
-        return response()->json([
-            'status'  => true,
-            'message' => 'success',
-            'jobs' => jobResource::collection($myJobs)->response()->getData(true),
-
-        ], 200);
-    }
-
-    public function mainPage_authorJobs(){
-        date_default_timezone_set('Africa/cairo');
-
-        try {
-            if (! $employer = auth('employer')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 400);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 400);
-
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 400);
-        }
-
-        $authorJobs = Job::where('employer_id', '!=', $employer->id)->where('status', '=', 1)->where('category_id', '=', $employer->business)->where('meeting_date', '=', date('Y-m-d'))->orderBy('id', 'desc')->where('meeting_from', '>', date('H:i:s'))->orWhere('meeting_date', '>', date('Y-m-d'))->where('employer_id', '!=', $employer->id)->where('status', '=', 1)->where('category_id', '=', $employer->business)->orderBy('id', 'desc')->paginate(6);
-
-        return response()->json([
-            'status'  => true,
-            'message' => 'success',
-            'jobs'=> jobResource::collection($authorJobs)->response()->getData(true),
-            // 'authorJobs'=> jobResource::collection($authorJobs)->response()->getData(true),
-
-        ], 200);
-    }
-
-    public function schedule(){
-        date_default_timezone_set('Africa/cairo');
-
-        //get employer
-        try {
-            if (! $employer = auth('employer')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 400);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 400);
-
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 400);
-        }
-
-
-        $job = job::where('meeting_date', '=', date('Y-m-d'))->where('meeting_from', '>', date('H:i:s'))->withCount('EmployeeJob')->where('status', '=', 1)->where('employer_id', '=', $employer->id)->orderBy('id', 'desc')
-                    ->orWhere('meeting_date', '>', date('Y-m-d'))->withCount('EmployeeJob')->where('status', '=', 1)->where('employer_id', '=', $employer->id)->orderBy('id', 'desc')->get();
-
-        return response::suceess('success', 200, 'schedule', jobResource::collection($job));
-    }
-
+    //notification
     public function makeVideoNotification(Request $request){
+        //validation
         $validator = Validator::make($request->all(), [
             'employee_id'           => 'required|exists:employees,id|integer',
             'job_id'                => 'required|exists:jobs,id|integer',
@@ -703,32 +606,22 @@ class employer
             return response::falid($validator->errors(), 422);
         }
 
-        //get user by token
-        try {
-            if (! $employer = auth('employer')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 400);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 400);
-
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 400);
+        //get employer data
+        if (! $employer = auth('employer')->user()) {
+            return response::falid('user_not_found', 404);
         }
 
-        $employeeJob = EmployeeJob::where('employee_id', '=', $request->get('employee_id'))->where('job_id', '=', $request->get('job_id'))->first();
+        $employeeJob = EmployeeJob::where('employee_id', '=', $request->get('employee_id'))
+                                    ->where('job_id', '=', $request->get('job_id'))
+                                    ->first();
 
+        //if job employee not found
         if($employeeJob == null){
             return response::falid('some thing is wrong', 400);
         }
 
-        $notification = EmployeeNotifications::create([
+        //create notificaion
+        EmployeeNotifications::create([
             'type'               => 2,
             'title'              => $request->get('title'),
             'body'               => $request->get('body'),
@@ -740,57 +633,11 @@ class employer
             'employer_id'        => $employer->id,
         ]);
 
-        $notification = EmployeeNotifications::find($notification->id);
-
-        //make notification
-
+        //get employee token
         $employeeToken = Employees::find($request->get('employee_id'))->token;
 
-
-        $SERVER_API_KEY = $this->FIREBASE_SERVER_API_KEY;
-
-        $token_1 = $employeeToken;
-
-        $data = [
-
-            "registration_ids" => [
-                $token_1
-            ],
-
-            "notification" => [
-                "title"         => $notification->title,
-                "body"          => $notification->body,
-                "employer_id"   => $employer->id,
-                "sound"         => "default" // required for sound on ios
-            ],
-
-        ];
-
-        $dataString = json_encode($data);
-
-        $headers = [
-
-            'Authorization: key=' . $SERVER_API_KEY,
-
-            'Content-Type: application/json',
-
-        ];
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
-
-        curl_setopt($ch, CURLOPT_POST, true);
-
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
-
-        $response = curl_exec($ch);
+        //send notification
+        $this->firbaseNotifications->send_notification($request->get('title'), $request->get('body'), $employeeToken);
 
         return response::suceess('success', 200);
     }
@@ -807,14 +654,31 @@ class employer
 
         $employerNotification = EmployerNotifications::find($request->get('notification_id'));
 
+        //if notification nout found
         if($employerNotification == null){
             return response::falid('this notification not found', 404);
         }
 
+        //delete notification
         if($employerNotification->delete()){
             return response::suceess('success', 200);
         }
     }
+
+    public function getEmplyerNotification(){
+        //get user by token
+        if (! $employer = auth('employer')->user()) {
+            return response::falid('user_not_found', 404);
+        }
+
+        //get notification
+        $notifications = EmployerNotifications::where('employer_id', '=', $employer->id)
+                                                ->orderBy('id', 'desc')
+                                                ->get();
+
+        return response::suceess('success', 200, 'notifications', emoloyerNotificationResource::collection($notifications));
+    }
+
 
     //accept and reject after interview
     public function acceptRejectEmployee(Request $request){
@@ -832,98 +696,47 @@ class employer
             return response::falid($validator->errors(), 422);
         }
 
-        //get user by token
-        try {
-            if (! $employer = auth('employer')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 400);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 400);
-
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 400);
+        //get employer data
+        if (! $employer = auth('employer')->user()) {
+            return response::falid('user_not_found', 404);
         }
 
         //get employeeJob
-        $employeeJob = EmployeeJob::where('employee_id', '=', $request->get('employee_id'))->where('job_id', '=', $request->get('job_id'))->whereHas('job', function($q) use($employer){
-            $q->where('employer_id', '=', $employer->id);
-        })->first();
+        $employeeJob = EmployeeJob::where('employee_id', '=', $request->get('employee_id'))
+                                    ->where('job_id', '=', $request->get('job_id'))
+                                    ->whereHas('job', function($q) use($employer){
+                                        $q->where('employer_id', '=', $employer->id);
+                                    })
+                                    ->first();
 
+        //if employee job not found
         if($employeeJob == null){
             return response::falid('this candate not found', 400);
         }
 
+        //accept or reject
         $employeeJob->candat_status = $request->get('status');
         $employeeJob->note          = $request->get('note');
         $employeeJob->save();
 
 
+        //if i accepted or rejected him (not underreview)
         if($request->get('status') != 2){
-            $notification = EmployeeNotifications::create([
+            //creat notification
+            EmployeeNotifications::create([
                 'type'               => 3,
                 'title'              => $request->get('title'),
                 'body'               => $request->get('body'),
                 'employee_id'        => $request->get('employee_id'),
             ]);
-
-            //make notificaion
-
+            
+            //get employee notification
             $employeeToken = $employeeJob->employee->token;
 
-            $SERVER_API_KEY = $this->FIREBASE_SERVER_API_KEY;
-
-            $token_1 = $employeeToken;
-
-            $data = [
-
-                "registration_ids" => [
-                    $token_1
-                ],
-
-                "notification" => [
-                    "title"         => $request->get('title'),
-                    "body"          =>  $request->get('body'),
-                    "sound"         => "default" // required for sound on ios
-                ],
-
-            ];
-
-            $dataString = json_encode($data);
-
-            $headers = [
-
-                'Authorization: key=' . $SERVER_API_KEY,
-
-                'Content-Type: application/json',
-
-            ];
-
-            $ch = curl_init();
-
-            curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
-
-            curl_setopt($ch, CURLOPT_POST, true);
-
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
-
-            $response = curl_exec($ch);
+            //send notification
+            $this->firbaseNotifications->send_notification($request->get('title'), $request->get('body'), $employeeToken);
         }
-
         return response::suceess('success', 200);
-
     }
 
     public function getCandatDetails(Request $request){
@@ -938,68 +751,79 @@ class employer
         }
 
         //get user by token
-        try {
-            if (! $employer = auth('employer')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 400);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 400);
-
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 400);
+        if (! $employer = auth('employer')->user()) {
+            return response::falid('user_not_found', 404);
         }
 
-        $employeeJob = EmployeeJob::select('job_id','note', 'candat_status')->whereHas('job', function($q) use($employer){
-            $q->where('employer_id', '=', $employer->id);
-        })->where('employee_id', '=', $request->get('employee_id'))->where('job_id', '=', $request->get('job_id'))->first();
+        //get employee job
+        $employeeJob = EmployeeJob::select('job_id','note', 'candat_status')
+                                    ->whereHas('job', function($q) use($employer){
+                                        $q->where('employer_id', '=', $employer->id);
+                                    })
+                                    ->where('employee_id', '=', $request->get('employee_id'))
+                                    ->where('job_id', '=', $request->get('job_id'))
+                                    ->first();
 
+        //ig employee job not found
         if($employeeJob == null){
             return response::falid('this candat not found', 404);
-        } else {
-            return response::suceess('success', 200, 'candat', $employeeJob);
         }
+
+        return response::suceess('success', 200, 'candat', $employeeJob);
     }
 
     public function agoraToken(){
-        return app('App\Http\Controllers\Api\site\AgoraController')->generateToken();
+        return $this->AgoraService->generateToken();
     }
 
-    public function getEmplyerNotification(){
-        //get user by token
-        try {
-            if (! $employer = auth('employer')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 400);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 400);
-
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 400);
+    public function schedule(){
+        //get employer data
+        if (! $employer = auth('employer')->user()) {
+            return response::falid('user_not_found', 404);
         }
 
-        $notifications = EmployerNotifications::where('employer_id', '=', $employer->id)->orderBy('id', 'desc')->get();
+        //get jobs
+        $job = job::NotCome()
+                    ->withCount('EmployeeJob')
+                    ->where('status', '=', 1)
+                    ->where('employer_id', '=', $employer->id)
+                    ->orderBy('id', 'desc')
+                    ->get();
 
-        return response::suceess('success', 200, 'notifications', emoloyerNotificationResource::collection($notifications));
+        return response::suceess('success', 200, 'schedule', jobResource::collection($job));
+    }
+
+    public function mainPage(){
+        //get employer
+        if (! $employer = auth('employer')->user()) {
+            return response::falid('user_not_found', 404);
+        }
+
+        //get employer jobs
+        $myJobs = Job::NotCome()
+                        ->where('employer_id', '=', $employer->id)
+                        ->where('status', '=', 1)
+                        ->orderBy('id', 'desc')
+                        ->paginate(1, ['*'], 'myJobs');
+
+        $authorJobs = Job::NotCome()
+                        ->where('employer_id', '!=', $employer->id)
+                        ->where('status', '=', 1)
+                        ->where('category_id', '=', $employer->business)
+                        ->orderBy('id', 'desc')
+                        ->paginate(1, ['*'], 'authorJobs');
+
+        return response()->json([
+            'status'        => true,
+            'message'       => 'success',
+            'myJobs'        => jobResource::collection($myJobs)->response()->getData(true),
+            'authorJobs'    => jobResource::collection($authorJobs)->response()->getData(true),
+        ], 200);
     }
 
     //search
     public function search(Request $request){
-        date_default_timezone_set('Africa/cairo');
-
+        //vallidation
         $validator = Validator::make($request->all(), [
             'text'    => 'nullable|string',
         ]);
@@ -1008,27 +832,19 @@ class employer
             return response::falid($validator->errors(), 422);
         }
 
-        //get user by token
-        try {
-            if (! $employer = auth('employer')->user()) {
-                return response::falid('user_not_found', 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response::falid('token_expired', 400);
-
-        } catch (TokenInvalidException $e) {
-
-            return response::falid('token_invalid', 400);
-
-        } catch (JWTException $e) {
-
-            return response::falid('token_absent', 400);
+        //get empoyer
+        if (! $employer = auth('employer')->user()) {
+            return response::falid('user_not_found', 404);
         }
 
         //search in job for author employer in your category
-        $jobs = Job::where('meeting_date', '=', date('Y-m-d'))->where('meeting_from', '>', date('H:i:s'))->where('status', '=', 1)->where('category_id', '=', $employer->business)->where('employer_id', '!=', $employer->id)->where('title', 'LIKE', '%' . $request->get('text') . '%')->orderBy('id', 'desc')->orWhere('meeting_date', '>', date('Y-m-d'))->where('status', '=', 1)->where('category_id', '=', $employer->business)->where('employer_id', '!=', $employer->id)->where('title', 'LIKE', '%' . $request->get('text') . '%')->orderBy('id', 'desc')->get();
+        $jobs = Job::NotCome()
+                    ->where('status', '=', 1)
+                    ->where('category_id', '=', $employer->business)
+                    ->where('employer_id', '!=', $employer->id)
+                    ->where('title', 'LIKE', '%' . $request->get('text') . '%')
+                    ->orderBy('id', 'desc')
+                    ->get();
 
         return response::suceess('success', 200, 'jobs', jobResource::collection($jobs));
     }

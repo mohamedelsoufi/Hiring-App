@@ -14,7 +14,7 @@ use App\Models\EmployeeJob;
 use App\Models\EmployeeNotifications;
 use App\Models\EmployerNotifications;
 use App\Models\job;
-use App\Service\firbaseNotifications;
+use App\Services\firbaseNotifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;

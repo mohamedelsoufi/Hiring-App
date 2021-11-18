@@ -3,6 +3,8 @@ namespace App\Services;
 use App\Libs\Agora\AccessToken;
 use App\Libs\Agora\RtmTokenBuilder;
 use Log;
+use Exception;
+
 
 class AgoraService
 {
@@ -45,6 +47,34 @@ class AgoraService
             Log::error('[AGORA_GENERATE_RTM_TOKEN_ERROR] '. $e->getMessage());
 
             return false;
+        }
+    }
+
+    //creat token
+    public function generateToken()
+    {
+        try {
+            $channelName = 'agora';
+            // Rtc token dùng để video call
+
+            $token = $this->getRtcToken($channelName);
+            // Rtm token dùng để chat
+
+            $rtmToken = $this->getRtmToken($channelName);
+
+            if (!$token || !$rtmToken) {
+                $this->error('Generate token error');
+            }
+
+            $data = [
+                'channel_name'  => $channelName,
+                'token'         => $token,
+                'rtm_token'     => $rtmToken,
+            ];
+
+            return response()->json($data);
+        } catch (Exception $e) {
+            return 'erooor';
         }
     }
 }

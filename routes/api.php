@@ -81,8 +81,7 @@ Route::group(['prefix' => 'employer'], function() {
         Route::post('changeEmployerPassword', 'Api\site\auth\profileController@changeEmployerPassword');
 
         //main page
-        Route::get('mainPage/myJob', 'Api\site\employer@mainPage_myJob');
-        Route::get('mainPage/authorJobs', 'Api\site\employer@mainPage_authorJobs');
+        Route::get('mainPage', 'Api\site\employer@mainPage');
 
         //myScedule
         Route::get('mySchedule', 'Api\site\employer@schedule');

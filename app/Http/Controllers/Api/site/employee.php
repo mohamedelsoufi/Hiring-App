@@ -279,25 +279,6 @@ class employee extends Controller
         return response::falid('you don\'t apply for this job', 404);
     }
 
-    public function jobCategory(Request $request){
-        //validaion
-        $validator = Validator::make($request->all(), [
-            'category_id'    => 'required|exists:categories,id|integer',
-        ]);
-
-        if($validator->fails()){
-            return response::falid($validator->errors(), 422);
-        }
-
-        $jobs = Job::NotCome()
-                    ->where('category_id', '=', $request->get('category_id'))
-                    ->where('status', '=', 1)
-                    ->orderBy('id', 'desc')
-                    ->get();
-
-        return response::suceess('success', 200, 'jobs', jobResource::collection($jobs));
-    }
-
     //notification
     public function getEmplyeeNotification(){
         if (! $employee = auth('employee')->user()) {

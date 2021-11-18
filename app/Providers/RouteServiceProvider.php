@@ -46,6 +46,11 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapGuestRoutes();
+
+        $this->mapEmployerRoutes();
+
+        $this->mapEmployeeRoutes();
         //
     }
 
@@ -77,4 +82,29 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
     }
+
+    protected function mapGuestRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/guest.php'));
+    }
+
+    protected function mapEmployerRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/employer.php'));
+    }
+
+    protected function mapEmployeeRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/employee.php'));
+    }
+    
 }

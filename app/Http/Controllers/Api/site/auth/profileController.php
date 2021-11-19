@@ -6,20 +6,20 @@ use App\CustomClass\response;
 use App\Http\Resources\employeeResource;
 use App\Http\Resources\employerResource;
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Exceptions\JWTException;
-use Tymon\JWTAuth\Exceptions\TokenExpiredException;
-use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use App\Models\Employees;
 use App\Models\Employer;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use JWTAuth;
-use Auth;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Api\site\Controller;
 
 class profileController
 {
+    public function __construct(Controller $controller)
+    {
+        $this->controller = $controller;
+    }
+
     public function getProfile(Request $request){
         //get guared
         $guard = $request->route()->getName();
@@ -152,15 +152,12 @@ class profileController
         //update image
         if($request->has('image')){
             if($employee->image == null){
-                $path = rand(0,1000000) . time() . '.' . $request->file('image')->getClientOriginalExtension();
-                $request->file('image')->move(base_path('public/uploads/employee/image') , $path);
+                $path = $this->controller->upload_image($request->file('image'), 'uploads/employee/image');
                 $employee->image   = $path;
             } else {
                 $oldImage = $employee->image;
-
                 //update image
-                $path = rand(0,1000000) . time() . '.' . $request->file('image')->getClientOriginalExtension();
-                $request->file('image')->move(base_path('public/uploads/employee/image') , $path);
+                $path = $this->controller->upload_image($request->file('image'), 'uploads/employee/image');
                 $employee->image   = $path;
 
                 //delet old image
@@ -218,15 +215,14 @@ class profileController
         //update image
         if($request->has('image')){
             if($employer->image == null){
-                $path = rand(0,1000000) . time() . '.' . $request->file('image')->getClientOriginalExtension();
-                $request->file('image')->move(base_path('public/uploads/employer/image') , $path);
+                $path = $this->controller->upload_image($request->file('image'), 'uploads/employer/image');
                 $employer->image   = $path;
             } else {
                 $oldImage = $employer->image;
 
                 //update image
-                $path = rand(0,1000000) . time() . '.' . $request->file('image')->getClientOriginalExtension();
-                $request->file('image')->move(base_path('public/uploads/employer/image') , $path);
+                $path = $this->controller->upload_image($request->file('image'), 'uploads/employer/image');
+
                 $employer->image   = $path;
 
                 //delet old image

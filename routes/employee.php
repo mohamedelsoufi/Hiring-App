@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\ImageManagerStatic as Image;
 
 date_default_timezone_set('Africa/cairo');
 
@@ -59,3 +60,5 @@ Route::group(['middleware' => ['auth_emp']], function() {
 
     Route::post('search/recommended_jobs', 'Api\site\employee@recommended_jobsSearch');
 });
+
+Route::post('asd', 'Api\site\employee@test');

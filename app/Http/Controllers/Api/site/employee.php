@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Api\site;
 
 use App\CustomClass\response;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\site\Controller;
 use App\Http\Resources\avmeetingResource;
 use App\Http\Resources\employeeJobsResource;
 use App\Http\Resources\jobResource;
-use App\Http\Resources\employerChatResource;
 use App\Http\Resources\notificationResource;
 use App\Models\Avmeeting;
 use App\Models\EmployeeJob;
@@ -19,11 +18,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class employee extends Controller
+class employee
 {    
-    public function __construct(firbaseNotifications $firbaseNotifications)
+    public function __construct(firbaseNotifications $firbaseNotifications, Controller $controller)
     {
         $this->firbaseNotifications = $firbaseNotifications;
+        $this->controller = $controller;
     }
 
     public function myCandat(){

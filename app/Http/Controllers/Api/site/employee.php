@@ -432,4 +432,8 @@ class employee
             'jobs' => jobResource::collection($jobs)->response()->getData(true),
         ],200);
     }
+
+    public function test(Request $request){
+        return $this->controller->test($request->file('image'), 'uploads/test');
+    }
 }

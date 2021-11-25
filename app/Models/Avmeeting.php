@@ -11,10 +11,7 @@ class Avmeeting extends Model
     {
         return $this->belongsTo(job::class);
     }
-    // public function employee_job()
-    // {
-    //     return $this->hasOne('App\Models\EmployeeJob', 'avmeeting_id');
-    // }
+    
     protected $casts = [
         'available' => 'integer',
     ];

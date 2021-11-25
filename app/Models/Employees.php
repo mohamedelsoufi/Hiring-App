@@ -17,28 +17,18 @@ class Employees extends Authenticatable implements JWTSubject
     protected $guard = 'employee';
 
     protected $hidden = [
-        'password'
     ];  
     protected $appended=['image_path','cv_path','audio_path','video_path'];
 
     protected $guarded = [];
 
-    // protected $fillable = [
-    //     'id','fullName','email','password','country','city','industry','title',
-    //     'qualification','university','graduation_year','study_field','deriving_licence',
-    //     'state','skills','languages','cv','audio','video','birth','gender', 'image'
-    // ];
-
-
-
     protected $casts = [
-        'skills'=> 'array',
-        'languages'=> 'array',
-        'graduation_year' => 'integer',
-        'deriving_licence'=> 'integer',
-        'gender' => 'integer',
-        'experience'=> 'integer',
-        // 'category_id'=> 'array',
+        'skills'            => 'array',
+        'languages'         => 'array',
+        'graduation_year'   => 'integer',
+        'deriving_licence'  => 'integer',
+        'gender'            => 'integer',
+        'experience'        => 'integer',
     ];
 
     public function report()
@@ -69,10 +59,6 @@ class Employees extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo(City::class, 'city_id');
     }
-
-    // public function chat(){
-    //     return $this->hasMany(Chat::class, 'employee_id');
-    // }
 
     public function employeeChat(){
         return $this->hasMany(EmployeeChat::class, 'employee_id');

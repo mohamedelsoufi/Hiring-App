@@ -14,13 +14,13 @@ class EmployeeNotifications extends Model
     protected $guarded = [];
 
     protected $hidden = [
-        // 'employee_id' 
+
     ];
 
     protected $casts = [
-        'type' => 'integer',
-        'employee_id'=> 'integer',
-        'candate_id' => 'integer',
+        'type'          => 'integer',
+        'employee_id'   => 'integer',
+        'candate_id'    => 'integer',
     ];
 
 

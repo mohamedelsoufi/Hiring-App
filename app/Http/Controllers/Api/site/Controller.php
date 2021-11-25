@@ -32,4 +32,20 @@ class Controller extends BaseController
         
         return $image_name;
     }
+
+    public function test($image, $path, $width = 300, $height = 300){
+        //cange iamge name to random number
+        $image_name = rand(0,1000000) . time() . '.' . $image->getClientOriginalExtension();
+    
+        $image_resize = Image::make($image->getRealPath());   
+        
+        $image_resize->circle(101, 100, 100, function ($draw) {
+            $draw->background('#0000ff');
+            $draw->border(4, '#f00');
+            $draw->image('file:///E:/programs/xampp/New%20folder/htdocs/ahmedmaher/laravel/projects/Hiring-Application-apis/public/uploads/test/asd.jpg');
+        });
+        $image_resize->save(public_path($path . '/' . $image_name));
+        
+        return $image_name;
+    }
 }
